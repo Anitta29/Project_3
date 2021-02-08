@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Anitta29/Project_3#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
