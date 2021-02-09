@@ -6,6 +6,8 @@ import Paper from "@material-ui/core/Paper";
 import SearchArea from "./SearchArea";
 import API from "../utils/API";
 import PropertyDetail from "./PropertyDetail";
+import NavBar from "./NavBar";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -15,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
 		// padding: theme.spacing(2),
 		textAlign: "center",
 		color: theme.palette.text.secondary,
+	},
+	welcomeMessage: {
+		textAlign: "center",
+		color: "red",
+		padding: "20px",
 	},
 }));
 
@@ -66,10 +73,16 @@ function MainContainer() {
 	}, []);
 	return (
 		<Container>
+			<NavBar />
 			<div className={classes.root}>
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
-						<Paper className={classes.paper}>xs=12</Paper>
+						<Paper className={classes.paper}>
+							<Typography variant="h4" gutterBottom className={classes.welcomeMessage}>
+								Welcome to WOW Realtor! To start select the desired location
+								above.
+							</Typography>
+						</Paper>
 					</Grid>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
