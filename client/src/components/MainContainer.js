@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "./Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import SearchArea from "./SearchArea";
 import API from "../utils/API";
+import PropertyDetail from "./PropertyDetail";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -20,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
 function MainContainer() {
 	const classes = useStyles();
 	const [search, setSearch] = useState({
-		state: "",
-		city: "",
+		state: "NY",
+		city: "Manhattan",
 		result: [],
 	});
 
@@ -40,13 +41,29 @@ function MainContainer() {
 	const searchMovies = (state, city) => {
 		API.search(state, city).then((result) => {
 			console.log(result);
-			setSearch((state) => ({ ...state, result: result.data }));
+			const propertyWithImage = result.data.filter(
+				(property) => property.thumbnail
+			);
+			setSearch((state) => ({ ...state, result: propertyWithImage }));
 		});
 	};
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
 		searchMovies(search.state, search.city);
 	};
+
+	useEffect(() => {
+		API.search(search.state, search.city).then((result) => {
+			const propertyWithImage = result.data.filter(
+				(property) => property.thumbnail
+			);
+
+			setSearch((state) => ({
+				...state,
+				result: propertyWithImage.slice(0, 4),
+			}));
+		});
+	}, []);
 	return (
 		<Container>
 			<div className={classes.root}>
@@ -65,18 +82,13 @@ function MainContainer() {
 						</Paper>
 					</Grid>
 
-					<Grid item xs={3}>
-						<Paper className={classes.paper}>xs=3</Paper>
-					</Grid>
-					<Grid item xs={3}>
-						<Paper className={classes.paper}>xs=3</Paper>
-					</Grid>
-					<Grid item xs={3}>
-						<Paper className={classes.paper}>xs=3</Paper>
-					</Grid>
-					<Grid item xs={3}>
-						<Paper className={classes.paper}>xs=3</Paper>
-					</Grid>
+					{search.result.map((property, index) => (
+						<Grid key={index} item xs={3}>
+							<Paper className={classes.paper}>
+								<PropertyDetail property={property} />
+							</Paper>
+						</Grid>
+					))}
 				</Grid>
 			</div>
 		</Container>
