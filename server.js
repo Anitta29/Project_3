@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 // app.use(routes);
 
-// TODO: move to routes file
+// TODO: move this get route to routes file
 app.get("/api/search/:state/:city", (req, res) => {
 	var options = {
 		method: "GET",
@@ -40,7 +40,6 @@ app.get("/api/search/:state/:city", (req, res) => {
 	axios
 		.request(options)
 		.then(function (response) {
-			console.log(response.data);
 			res.json(response.data.properties);
 		})
 		.catch(function (error) {
