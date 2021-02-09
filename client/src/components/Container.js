@@ -1,7 +1,8 @@
 import React from "react";
+import Container from "@material-ui/core/Container";
 
-function Container(props) {
-  return <div className={`container${props.fluid ? "-fluid" : ""}`}>{props.children}</div>;
+function WrapContainer(props) {
+	return <Container>{props.children}</Container>;
 }
 
-export default Container;
+export default WrapContainer;

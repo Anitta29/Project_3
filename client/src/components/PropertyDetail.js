@@ -1,13 +1,22 @@
 import React from "react";
+import CardMedia from "@material-ui/core/CardMedia";
+
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+	media: {
+		height: 140,
+	},
+}));
 
 function PropertyDetail({ property }) {
 	console.log(property);
+	const classes = useStyles();
 	return (
 		<div className="text-center">
-			<img
-				className="img-fluid"
-				src={property.thumbnail}
-				style={{ margin: "0 auto" }}
+			<CardMedia
+				  className={classes.media}
+				image={property.thumbnail}
 			/>
 			<h3>Beds: {property.beds}</h3>
 			<h3>Baths: {property.baths}</h3>
