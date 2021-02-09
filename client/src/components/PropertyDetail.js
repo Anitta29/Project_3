@@ -13,6 +13,8 @@ function PropertyDetail({ property }) {
 	console.log(property);
 	const classes = useStyles();
 	return (
+
+		
 		<div className="text-center">
 			<CardMedia
 				  className={classes.media}
@@ -20,7 +22,7 @@ function PropertyDetail({ property }) {
 			/>
 			<h3>Beds: {property.beds}</h3>
 			<h3>Baths: {property.baths}</h3>
-			<h3>Price: ${property.price}</h3>
+			<h3>Price: ${property.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h3>
 			<h3>Sqft: {property.lot_size?.size || 0} sqft</h3>
 			<h3>
 				Address: {property.address.line}, {property.address.city},{" "}
