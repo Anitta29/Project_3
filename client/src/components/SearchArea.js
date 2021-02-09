@@ -13,26 +13,22 @@ const useStyles = makeStyles((theme) => ({
 		"& > *": {
 			margin: theme.spacing(1),
 			width: "25ch",
-
 		},
 	},
 	formControl: {
 		width: "50%",
-		
 	},
 	selectEmpty: {
 		marginTop: theme.spacing(2),
-		
 	},
 	button: {
 		width: "20%",
-		margin: 20
+		margin: 20,
 	},
-	searchState:{
+	searchState: {
 		marginLeft: 15,
-		textAlign: "left"
-	}
-	
+		textAlign: "left",
+	},
 }));
 
 function SearchForm(props) {
@@ -46,8 +42,11 @@ function SearchForm(props) {
 	return (
 		<div>
 			<FormControl className={classes.formControl}>
-				<InputLabel className={classes.searchState} id="demo-simple-select-outlined-label">
-					 Select a state
+				<InputLabel
+					className={classes.searchState}
+					id="demo-simple-select-outlined-label"
+				>
+					Select a state
 				</InputLabel>
 				<Select
 					name="state"

@@ -76,14 +76,14 @@ function MainContainer() {
 			<NavBar />
 			<div className={classes.root}>
 				<Grid container spacing={3}>
+					
 					<Grid item xs={12}>
-							<Typography variant="h4" gutterBottom className={classes.welcomeMessage}>
-								"Welcome to WOW Realtor! <br></br>To start select the desired location
-								above.""
-							</Typography>
-					</Grid>
-					<Grid item xs={12}>
+				
 						<Paper className={classes.paper}>
+						<Typography variant="h4" gutterBottom className={classes.welcomeMessage}>
+								"Welcome to WOW Realtor! <br></br>To start select the desired location
+								above."
+							</Typography>
 							<SearchArea
 								state={search.state}
 								city={search.city}
