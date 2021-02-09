@@ -8,6 +8,7 @@ import API from "../utils/API";
 import PropertyDetail from "./PropertyDetail";
 import NavBar from "./NavBar";
 import Typography from "@material-ui/core/Typography";
+import { Card } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -20,8 +21,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	welcomeMessage: {
 		textAlign: "center",
-		color: "red",
-		padding: "20px",
+		padding: 40,
 	},
 }));
 
@@ -77,12 +77,10 @@ function MainContainer() {
 			<div className={classes.root}>
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
-						<Paper className={classes.paper}>
 							<Typography variant="h4" gutterBottom className={classes.welcomeMessage}>
-								Welcome to WOW Realtor! To start select the desired location
-								above.
+								"Welcome to WOW Realtor! <br></br>To start select the desired location
+								above.""
 							</Typography>
-						</Paper>
 					</Grid>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
@@ -97,9 +95,9 @@ function MainContainer() {
 
 					{search.result.map((property, index) => (
 						<Grid key={index} item xs={3}>
-							<Paper className={classes.paper}>
+							<Card className={classes.paper}>
 								<PropertyDetail property={property} />
-							</Paper>
+							</Card>
 						</Grid>
 					))}
 				</Grid>

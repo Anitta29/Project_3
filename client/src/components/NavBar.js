@@ -34,7 +34,7 @@ export default function ButtonAppBar() {
 						aria-label="menu"
 					>
 					</IconButton>
-					<Link href="#" onClick={preventDefault} className={classes.title}>
+					<Link href="" onClick={preventDefault} className={classes.title}>
 						WOW REALTOR
 					</Link>
                    
