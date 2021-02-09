@@ -40,7 +40,7 @@ function MainContainer() {
 	const searchMovies = (state, city) => {
 		API.search(state, city).then((result) => {
 			console.log(result);
-			this.setSearch((state) => ({ ...state, result: result.data }));
+			setSearch((state) => ({ ...state, result: result.data }));
 		});
 	};
 	const handleFormSubmit = (event) => {
