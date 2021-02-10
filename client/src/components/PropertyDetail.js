@@ -35,7 +35,7 @@ function PropertyDetail({ property }) {
 						<h3>
 							Price: $
 							{property.price
-								.toFixed(2)
+								.toFixed()
 								.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
 						</h3>
 						<h3>Sqft: {property.lot_size?.size || 0} sqft</h3>
