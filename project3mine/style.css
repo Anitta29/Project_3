@@ -1,0 +1,65 @@
+.header{
+    color: white;
+    background-color: teal;
+  
+}
+
+
+body {
+        background-image: url(tropical-leaves-background_46250-1873.jpg);
+    height: 100%;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    
+
+}
+.text-center {
+    color: white;
+}
+
+.text {
+    float: right;
+
+}
+.col-md-8 {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.anav {
+    background-color: teal;
+    color: white;
+
+}
+.nav-link {
+    color: white;
+}
+.pbody {
+    background-image: url(1193669.jpg);
+ 
+  width: 100vw;
+  min-height: 100vh;
+}
+.cbody {
+    background-image: url(summer-tropical.jpg);
+    width: 100vw;
+    min-height: 100vh;
+}
+  
+
+hr {
+    height: 1px;
+    color: black;
+    background-color: teal;
+    border: none;
+    width: 70px;
+}
+.card-body {
+    color: white;
+}
+.card-body {
+    background-color: teal;;
+}

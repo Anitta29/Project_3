@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/Anitta29/Project_3#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "if-env": "^1.0.4",
