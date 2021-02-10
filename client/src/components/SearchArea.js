@@ -140,6 +140,7 @@ function SearchForm(props) {
 					placeholder="Enter city"
 					id="city"
 				/> */}
+				
 			<br />
 			<Button
 				onClick={props.handleFormSubmit}

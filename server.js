@@ -32,7 +32,8 @@ app.get("/api/search/:state/:city", (req, res) => {
 			sort: "relevance",
 		},
 		headers: {
-			"x-rapidapi-key": "0847fb780bmshb3d33167dbb4ba6p158eecjsn85a782bf4d33",
+			// Enter API KEY HERE
+			// "x-rapidapi-key": "***API KEY GOES HERE",
 			"x-rapidapi-host": "realtor.p.rapidapi.com",
 		},
 	};
