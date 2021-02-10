@@ -1,33 +1,8 @@
-import logo from './logo.svg';
 import React from "react";
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Listings from './pages/Listings';
-import Home from './pages/Home';
-import NavBar from './components/Navbar';
+import MainContainer from "./components/MainContainer";
 
 function App() {
-  return (
-   <React.Fragment>
-     <Router>
-       <NavBar/>
-       <Switch>
-<Route path="/listings" component={Listings}></Route>
-<Route path="/" component={Home}></Route>       
-       </Switch>
-       {/* <Footer/> */}
-
-       
-
-
-     </Router>
-   </React.Fragment>
-  );
+	return <MainContainer />;
 }
 
 export default App;
