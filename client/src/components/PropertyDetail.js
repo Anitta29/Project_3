@@ -59,6 +59,7 @@ function PropertyDetail({ property }) {
 						href="#contained-buttons"
 						size="small"
 						color="primary"
+						data-value="pick"
 					></FavoriteBorderIcon>
 				</CardActions>
 			</Card>
