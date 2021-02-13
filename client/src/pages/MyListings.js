@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({}));
 
 function MyListings() {
 	return (
-		<section class="twitter">
+		<section className="twitter">
 			<h1>My Listing</h1>
 		</section>
 	);

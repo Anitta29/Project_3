@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 function Landing() {
-	const state = {
-		count: 0,
-	};
 	const classes = useStyles();
 	const [search, setSearch] = useState({
 		state: "NY",
@@ -60,14 +57,9 @@ function Landing() {
 		searchProperties(search.state, search.city);
 	};
 
-	const handleBtnClick = (event) => {
-		const buttonType = event.target.attributes.getNameItem("data-value").value;
-		const newState = { ...this.state };
-
-		if (buttonType === `pick`) {
-			newState.count = 1;
-			console.log("this worked", buttonType);
-		}
+	const handleBtnClick = (property) => {
+		console.log("click", property);
+		// API to save the favorite property to the database
 	};
 
 	useEffect(() => {
@@ -84,8 +76,8 @@ function Landing() {
 	}, []);
 
 	return (
-		<Container maxWidth="false">
-			<section class="twitter">
+		<Container maxWidth={false}>
+			<section className="twitter">
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
@@ -111,7 +103,7 @@ function Landing() {
 							<Card className={classes.paper}>
 								<PropertyDetail
 									property={property}
-									handleBtnClick={this.handleBtnClick}
+									onFavoriteClick={handleBtnClick}
 								/>
 							</Card>
 						</Grid>

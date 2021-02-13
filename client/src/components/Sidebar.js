@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 function Sidebar() {
 	return (
-		<aside class="sidebar">
-			<nav class="nav">
+		<aside className="sidebar">
+			<nav className="nav">
 				<ul>
 					<li>
 						<NavLink

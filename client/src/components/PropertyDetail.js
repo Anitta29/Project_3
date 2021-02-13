@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function PropertyDetail({ property }) {
+function PropertyDetail({ property, onFavoriteClick }) {
 	console.log(property);
 	const classes = useStyles();
 	return (
@@ -60,6 +60,7 @@ function PropertyDetail({ property }) {
 						size="small"
 						color="primary"
 						data-value="pick"
+						onClick={() => onFavoriteClick(property)}
 					></FavoriteBorderIcon>
 				</CardActions>
 			</Card>
