@@ -2,13 +2,12 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		flexGrow: 1,
+		// flexGrow: 1,
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
@@ -21,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
 	const classes = useStyles();
-	const preventDefault = (event) => event.preventDefault();
 
 	return (
 		<div className={classes.root}>
@@ -30,17 +28,25 @@ export default function ButtonAppBar() {
 					<IconButton
 						edge="start"
 						className={classes.menuButton}
-						color="inherit"
 						aria-label="menu"
-					>
-					</IconButton>
-					<Link href="" onClick={preventDefault} className={classes.title}>
-						WOW REALTOR
-					</Link>
-                   
-					<Button color="inherit">HOME</Button>
-					<Button color="inherit">MY LISTINGS</Button>
-					<Button color="inherit">Login</Button>
+						color="inherit"
+					></IconButton>
+					<div className={classes.title}>
+						<Button color="inherit" href="/">
+							WOW REALTOR
+						</Button>
+					</div>
+
+					<Button color="inherit" href="/">
+						HOME
+					</Button>
+					<Button color="inherit" href="/listings">
+						MY LISTINGS
+					</Button>
+
+					<Button color="inherit" href="/login">
+						Login
+					</Button>
 				</Toolbar>
 			</AppBar>
 		</div>

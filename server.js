@@ -3,11 +3,10 @@ require('./models/User');
 const express = require("express");
 
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const routes = require("./server/routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const axios = require("axios");
-var cors = require("cors");
+// var cors = require("cors");
 
 //Anita
 const authRoutes = require("./routes/authRoutes");
@@ -16,13 +15,14 @@ const requireAuth = require("./middlewares/requireAuth");
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
 // Add routes, both API and view
+<<<<<<< HEAD
 // app.use(routes);
 
 //Anita
@@ -541,6 +541,9 @@ app.get("/api/search/:state/:city", (req, res) => {
 			res.status(500).json(error.data);
 		});
 });
+=======
+app.use(routes);
+>>>>>>> f1b562f024e96a1ae17eca7f838fb298bd9fb6bd
 
 // Connect to the Mongo DB
 mongoose.connect(
