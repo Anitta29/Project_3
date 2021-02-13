@@ -9,7 +9,7 @@ import PropertyDetail from "./PropertyDetail";
 import NavBar from "./NavBar";
 import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
-
+import Userlogin from './UserLogin';
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -74,6 +74,12 @@ function MainContainer() {
 	return (
 		<Container>
 			<NavBar />
+
+{/* test */}
+
+<Userlogin/>
+
+{/* end test */}
 			<div className={classes.root}>
 				<Grid container spacing={3}>
 					
