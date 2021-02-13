@@ -60,6 +60,9 @@ function Landing() {
 	const handleBtnClick = (property) => {
 		console.log("click", property);
 		// API to save the favorite property to the database
+		API.favorite(property).then((result) => {
+			console.log(result);
+		});
 	};
 
 	useEffect(() => {
