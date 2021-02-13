@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "./Container";
+// import Container from "../components/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import SearchArea from "./SearchArea";
+import SearchArea from "../components/SearchArea";
 import API from "../utils/API";
-import PropertyDetail from "./PropertyDetail";
-import NavBar from "./NavBar";
+import PropertyDetail from "../components/PropertyDetail";
 import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -21,11 +21,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	welcomeMessage: {
 		textAlign: "center",
-		padding: 40,
 	},
 }));
-
-function MainContainer() {
+function Landing() {
 	const classes = useStyles();
 	const [search, setSearch] = useState({
 		state: "NY",
@@ -45,7 +43,7 @@ function MainContainer() {
 		}));
 	};
 
-	const searchMovies = (state, city) => {
+	const searchProperties = (state, city) => {
 		API.search(state, city).then((result) => {
 			console.log(result);
 			const propertyWithImage = result.data.filter(
@@ -56,7 +54,15 @@ function MainContainer() {
 	};
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
-		searchMovies(search.state, search.city);
+		searchProperties(search.state, search.city);
+	};
+
+	const handleBtnClick = (property) => {
+		console.log("click", property);
+		// API to save the favorite property to the database
+		API.favorite(property).then((result) => {
+			console.log(result);
+		});
 	};
 
 	useEffect(() => {
@@ -71,18 +77,20 @@ function MainContainer() {
 			}));
 		});
 	}, []);
+
 	return (
-		<Container>
-			<NavBar />
-			<div className={classes.root}>
+		<Container maxWidth={false}>
+			<section className="twitter">
 				<Grid container spacing={3}>
-					
 					<Grid item xs={12}>
-				
 						<Paper className={classes.paper}>
-						<Typography variant="h4" gutterBottom className={classes.welcomeMessage}>
-								"Welcome to WOW Realtor! <br></br>To start select the desired location
-								above."
+							<Typography
+								variant="h4"
+								gutterBottom
+								className={classes.welcomeMessage}
+							>
+								"Welcome to WOW Realtor! <br></br>To start select the desired
+								location above."
 							</Typography>
 							<SearchArea
 								state={search.state}
@@ -94,16 +102,18 @@ function MainContainer() {
 					</Grid>
 
 					{search.result.map((property, index) => (
-						<Grid key={index} item xs={3}>
+						<Grid key={index} item xs={12} md={6} lg={3}>
 							<Card className={classes.paper}>
-								<PropertyDetail property={property} />
+								<PropertyDetail
+									property={property}
+									onFavoriteClick={handleBtnClick}
+								/>
 							</Card>
 						</Grid>
 					))}
 				</Grid>
-			</div>
+			</section>
 		</Container>
 	);
 }
-
-export default MainContainer;
+export default Landing;

@@ -1,8 +1,10 @@
 import axios from "axios";
-const BASEURL = "http://localhost:3001/api/search";
 
 export default {
 	search: function (state, city) {
-		return axios.get(BASEURL + `/${state}/${city}`);
+		return axios.get(`/api/search/${state}/${city}`);
+	},
+	favorite: function (property) {
+		return axios.post(`/api/favorite`, { property });
 	},
 };

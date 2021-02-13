@@ -18,10 +18,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 	favoriteIcon: {
 		alignItems: "right",
+		cursor: "pointer",
 	},
 }));
 
-function PropertyDetail({ property }) {
+function PropertyDetail({ property, onFavoriteClick }) {
 	console.log(property);
 	const classes = useStyles();
 	return (
@@ -35,7 +36,7 @@ function PropertyDetail({ property }) {
 						<h3>
 							Price: $
 							{property.price
-								.toFixed(2)
+								.toFixed()
 								.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
 						</h3>
 						<h3>Sqft: {property.lot_size?.size || 0} sqft</h3>
@@ -56,9 +57,9 @@ function PropertyDetail({ property }) {
 					</Button>
 					<FavoriteBorderIcon
 						className={classes.favoriteIcon}
-						href="#contained-buttons"
 						size="small"
 						color="primary"
+						onClick={() => onFavoriteClick(property)}
 					></FavoriteBorderIcon>
 				</CardActions>
 			</Card>
