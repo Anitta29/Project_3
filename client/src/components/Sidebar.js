@@ -27,7 +27,15 @@ function Sidebar() {
 						</NavLink>
 					</li>
 					<li>
-						<a href="#">ABOUT </a>
+						<NavLink
+							exact
+							to="/about"
+							activeStyle={{
+								color: "#fff",
+							}}
+						>
+							About
+						</NavLink>
 					</li>
 					<li>
 						<a href="#">LOGIN</a>
