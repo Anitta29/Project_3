@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-<<<<<<< HEAD
+
 // app.use(routes);
 
 //Anita
@@ -541,9 +541,9 @@ app.get("/api/search/:state/:city", (req, res) => {
 			res.status(500).json(error.data);
 		});
 });
-=======
+
 app.use(routes);
->>>>>>> f1b562f024e96a1ae17eca7f838fb298bd9fb6bd
+
 
 // Connect to the Mongo DB
 mongoose.connect(
