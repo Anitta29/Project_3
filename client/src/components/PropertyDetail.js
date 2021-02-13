@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	favoriteIcon: {
 		alignItems: "right",
+		cursor: "pointer",
 	},
 }));
 
@@ -56,10 +57,8 @@ function PropertyDetail({ property, onFavoriteClick }) {
 					</Button>
 					<FavoriteBorderIcon
 						className={classes.favoriteIcon}
-						href="#contained-buttons"
 						size="small"
 						color="primary"
-						data-value="pick"
 						onClick={() => onFavoriteClick(property)}
 					></FavoriteBorderIcon>
 				</CardActions>
