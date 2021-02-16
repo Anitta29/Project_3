@@ -8,8 +8,12 @@ import API from "../utils/API";
 import PropertyDetail from "../components/PropertyDetail";
 import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
+<<<<<<< HEAD:client/src/components/MainContainer.js
+import Userlogin from './UserLogin';
+=======
 import Container from "@material-ui/core/Container";
 
+>>>>>>> f1b562f024e96a1ae17eca7f838fb298bd9fb6bd:client/src/pages/Landing.js
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -79,8 +83,20 @@ function Landing() {
 	}, []);
 
 	return (
+<<<<<<< HEAD:client/src/components/MainContainer.js
+		<Container>
+			<NavBar />
+
+{/* test */}
+
+<Userlogin/>
+
+{/* end test */}
+			<div className={classes.root}>
+=======
 		<Container maxWidth={false}>
 			<section className="twitter">
+>>>>>>> f1b562f024e96a1ae17eca7f838fb298bd9fb6bd:client/src/pages/Landing.js
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
