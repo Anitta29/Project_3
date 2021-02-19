@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 
-function Userlogin() {
+function Login() {
 
 
 const [email, setEmail] = useState('');
@@ -28,4 +28,4 @@ function logUser (){
     )
 }
 
-export default Userlogin;
+export default Login;
