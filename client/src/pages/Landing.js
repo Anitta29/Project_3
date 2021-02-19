@@ -80,7 +80,7 @@ function Landing() {
 
 	return (
 		<Container maxWidth={false}>
-			<section className="twitter">
+			<section className="display">
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
