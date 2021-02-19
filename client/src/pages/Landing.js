@@ -8,7 +8,11 @@ import API from "../utils/API";
 import PropertyDetail from "../components/PropertyDetail";
 import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
+
+import Userlogin from './UserLogin';
+
 import Container from "@material-ui/core/Container";
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -79,8 +83,24 @@ function Landing() {
 	}, []);
 
 	return (
+
+		<Container>
+			<NavBar />
+
+{/* test */}
+
+<Userlogin/>
+
+{/* end test */}
+			<div className={classes.root}>
+
 		<Container maxWidth={false}>
+
 			<section className="display">
+
+			<section className="twitter">
+
+
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
