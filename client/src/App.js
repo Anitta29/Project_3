@@ -4,6 +4,8 @@ import MyListings from "./pages/MyListings";
 import About from "./pages/About";
 import UserLogin from "./pages/UserLogin";
 import Sidebar from "./components/Sidebar";
+// import UserLogin from "./pages/UserLogin";
+
 
 import "./App.css";
 
@@ -14,7 +16,7 @@ function App() {
 		<main className="main">
 			<Router>
 				<Sidebar />
-
+				
 				<Route exact path="/" component={Landing} />
 				<Route exact path="/listings" component={MyListings} />
 				<Route exact path="/about" component={About} />
