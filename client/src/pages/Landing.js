@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
 	paper: {
 		// padding: theme.spacing(2),
 		textAlign: "center",
-		color: theme.palette.text.secondary,
+		color: "white",
+		backgroundColor: "#312450",
 	},
 	welcomeMessage: {
 		textAlign: "center",
@@ -80,10 +81,9 @@ function Landing() {
 	}, []);
 
 	return (
-		
-		<Container maxWidth={false}>
+		<Container align="center" maxWidth={false}>
 			{/* <UserLogin /> */}
-			<section className="twitter">
+			<section className="display">
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
@@ -106,12 +106,10 @@ function Landing() {
 
 					{search.result.map((property, index) => (
 						<Grid key={index} item xs={12} md={6} lg={3}>
-							<Card className={classes.paper}>
-								<PropertyDetail
-									property={property}
-									onFavoriteClick={handleBtnClick}
-								/>
-							</Card>
+							<PropertyDetail
+								property={property}
+								onFavoriteClick={handleBtnClick}
+							/>
 						</Grid>
 					))}
 				</Grid>
