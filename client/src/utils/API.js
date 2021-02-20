@@ -7,4 +7,7 @@ export default {
 	favorite: function (property) {
 		return axios.post(`/api/favorite`, { property });
 	},
+	auth: function (data) {
+		return axios.post(`/signin`, data)
+	}
 };

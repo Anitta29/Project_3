@@ -2,8 +2,9 @@ import React from "react";
 import Landing from "./pages/Landing";
 import MyListings from "./pages/MyListings";
 import About from "./pages/About";
-import Sidebar from "./components/Sidebar";
 import UserLogin from "./pages/UserLogin";
+import Sidebar from "./components/Sidebar";
+// import UserLogin from "./pages/UserLogin";
 
 
 import "./App.css";

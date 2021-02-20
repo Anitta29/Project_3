@@ -31,7 +31,10 @@ app.use(authRoutes);
 app.get("/loggedin", requireAuth ,(req, res) => {
 	res.send(`Hey you`);
 });
-//
+
+
+
+
 const mockResult = [
     {
         property_id: "M3982027198",
@@ -541,6 +544,7 @@ app.get("/api/search/:state/:city", (req, res) => {
 			res.status(500).json(error.data);
 		});
 });
+
 
 app.use(routes);
 

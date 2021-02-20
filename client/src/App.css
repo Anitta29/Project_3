@@ -54,27 +54,27 @@ html {
 	bottom: 0;
 	background-image: linear-gradient(to right, #5e42a6, #b74e91);
 }
-.twitter {
+.display {
 	position: relative;
 	width: 75%;
 	float: right;
 	height: 100vh;
 }
-.twitter .container {
+.display .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 100%;
 }
-.twitter a {
+.display a {
 	position: relative;
 }
-.twitter a img {
+.display a img {
 	width: 48px;
 	height: 48px;
 }
-.twitter p {
+.display p {
 	text-transform: uppercase;
 	font-size: 1em;
 	letter-spacing: 0.1em;

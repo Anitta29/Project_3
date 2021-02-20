@@ -39,13 +39,13 @@ function Sidebar() {
 					</li>
 					<li>
 					<NavLink
-							to="/login"
 							exact
+							to="/login"
 							activeStyle={{
 								color: "#fff",
 							}}
 						>
-							Log in
+							Login
 						</NavLink>
 					</li>
 				</ul>

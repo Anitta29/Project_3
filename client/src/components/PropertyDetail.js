@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 function PropertyDetail({ property, onFavoriteClick }) {
 	console.log(property);
 	const classes = useStyles();
+
 	return (
 		<div className="text-center">
 			<Card className={classes.root}>
