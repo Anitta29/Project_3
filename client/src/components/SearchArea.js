@@ -1,4 +1,6 @@
 import React from "react";
+// import "../styles/search.css";
+
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -6,7 +8,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	selectEmpty: {
 		marginTop: theme.spacing(2),
+		color: "white",
 	},
 	button: {
 		width: "20%",
@@ -27,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
 	searchState: {
 		marginLeft: 15,
 		textAlign: "left",
+		color: "white",
+	},
+	searchCity: {
+		color: "white",
 	},
 }));
 
@@ -47,6 +53,7 @@ function SearchForm(props) {
 				>
 					Select a state
 				</InputLabel>
+
 				<Select
 					name="state"
 					variant="outlined"
@@ -139,7 +146,7 @@ function SearchForm(props) {
 					placeholder="Enter city"
 					id="city"
 				/> */}
-				
+
 			<br />
 			<Button
 				onClick={props.handleFormSubmit}
