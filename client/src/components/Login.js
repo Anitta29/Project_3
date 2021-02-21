@@ -54,6 +54,8 @@ function Login() {
 		<Container>
 			<section className="display">
 				<Card className={classes.root}>
+					<h1 style={{ color: "black", textAlign: "center" }}>Login</h1>
+
 					<CardContent>
 						<React.Fragment>
 							<TextField

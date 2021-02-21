@@ -9,7 +9,6 @@ function UserLogin() {
 	return (
 		<Container>
 			<section className="display">
-				<h1>Login</h1>
 				<Login />
 			</section>
 		</Container>
