@@ -9,13 +9,15 @@ const initialState = {
 	authenticated: false,
 };
 
-export const registerComplete = (data) => (dispatch) => {
-	dispatch({
-		type: "CLEAR_ERROR",
-	});
-	dispatch({
-		type: "LOGIN",
-		payload: data,
+export const register = (data) => (dispatch) => {
+	API.register(data).then((result) => {
+		dispatch({
+			type: "CLEAR_ERROR",
+		});
+		dispatch({
+			type: "LOGIN",
+			payload: result.data,
+		});
 	});
 };
 
