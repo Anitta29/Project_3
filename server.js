@@ -1,5 +1,5 @@
 //Anita
-require('./models/User');
+require("./models/User");
 const express = require("express");
 
 const mongoose = require("mongoose");
@@ -28,17 +28,14 @@ if (process.env.NODE_ENV === "production") {
 //Anita
 app.use(authRoutes);
 
-app.get("/loggedin", requireAuth ,(req, res) => {
+app.get("/loggedin", requireAuth, (req, res) => {
 	res.send(`Hey you`);
 });
 
 app.use(routes);
 
-
 // Connect to the Mongo DB
-mongoose.connect(
-	process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/WowRealtor");
 
 // Start the API server
 app.listen(PORT, function () {
