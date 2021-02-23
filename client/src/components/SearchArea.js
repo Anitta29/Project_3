@@ -1,6 +1,5 @@
 import React from "react";
 // import "../styles/search.css";
-
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,6 +7,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
@@ -62,13 +63,6 @@ function SearchForm(props) {
 					onChange={props.handleInputChange}
 					label="Select a state"
 				>
-					{/* <select
-					name="state"
-					id="state"
-					onChange={props.handleInputChange}
-					value={props.state}
-					className="form-control"
-				> */}
 					<MenuItem value={"AL"}>Alabama</MenuItem>
 					<MenuItem value={"AK"}>Alaska</MenuItem>
 					<MenuItem value={"AZ"}>Arizona</MenuItem>
@@ -123,7 +117,7 @@ function SearchForm(props) {
 				</Select>
 			</FormControl>
 
-			<form className={classes.root} noValidate autoComplete="off">
+			<form className={classes.root} noValidate autoComplete="on">
 				<TextField
 					onChange={props.handleInputChange}
 					value={props.city}
