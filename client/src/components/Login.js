@@ -10,6 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import TextField from "@material-ui/core/TextField";
+import { Link, Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -39,8 +40,16 @@ function Login() {
 	// const [password, setPassword] = useState("");
 	// const [token, setToken] = useState("");
 	// const [authenticated, setAuthenticated] = useState(false);
-	const { email, password, errorMessage } = useSelector((state) => state.auth);
+	const { email, password, authenticated, errorMessage } = useSelector(
+		(state) => state.auth
+	);
+
 	const dispatch = useDispatch();
+
+	console.log({ authenticated });
+	if (authenticated) {
+		return <Redirect to="/" />;
+	}
 	// useEffect(() => {
 	//     axios.get('./signup').then(data => console.log(data))
 	// }, [])
@@ -80,6 +89,7 @@ function Login() {
 							/>
 							{errorMessage === "" ? null : <p>{errorMessage}</p>}
 
+							<br />
 							<Button
 								className={classes.input}
 								type="submit"
@@ -88,12 +98,21 @@ function Login() {
 								color="primary"
 								onClick={() => dispatch(login({ email, password }))}
 							>
-								Primary
+								Login
+							</Button>
+							<br />
+							<Button
+								component={Link}
+								to={"/register"}
+								className={classes.input}
+								variant="contained"
+								color="primary"
+							>
+								Register
 							</Button>
 						</React.Fragment>{" "}
 					</CardContent>
 				</Card>
-				<h5>Hello {email}</h5>
 			</section>
 		</Container>
 	);
