@@ -8,6 +8,9 @@ export default {
 		return axios.post(`/api/favorite`, { property });
 	},
 	auth: function (data) {
-		return axios.post(`/signin`, data)
-	}
+		return axios.post(`/signin`, data);
+	},
+	register: function (data) {
+		return axios.post("/signup", data);
+	},
 };
