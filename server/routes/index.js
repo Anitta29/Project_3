@@ -481,7 +481,7 @@ const mockResult = [
 ];
 
 router.get("/api/search/:state/:city", (req, res) => {
-	return res.json(mockResult);
+	// return res.json(mockResult);
 
 	var options = {
 		method: "GET",
