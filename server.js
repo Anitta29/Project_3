@@ -1,7 +1,6 @@
 //Anita
 require("./models/User");
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./server/routes");
 const app = express();

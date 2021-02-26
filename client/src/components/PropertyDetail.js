@@ -86,10 +86,10 @@ function PropertyDetail({ property, onClick, onListing }) {
                         className={classes.favoriteIcon}
                         size="small"
                         color="primary"
-                        onClick={() => {
-                            onClick(property);
-                        }}
-                    ></FavoriteBorderIcon>
+                        onClick={() => onClick(property)}
+                    >
+
+					</FavoriteBorderIcon>
                 )}
                 {!onListing && isFavorite === true && (
                     <FavoriteIcon

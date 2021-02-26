@@ -76,7 +76,7 @@ function Landing() {
 		}
 		API.saveProperty(property).then((result) => {
 			alert("Property Saved!")
-			dispatch(removeFavorite(property.listing_id))
+			dispatch(setFavorite(property.listing_id))
 		});
 	};
 
@@ -121,7 +121,7 @@ function Landing() {
 						<Grid key={index} item xs={12} md={6} lg={3}>
 							<PropertyDetail
 								property={property}
-								onFavoriteClick={handleBtnClick}
+								onClick={handleBtnClick}
 							/>
 						</Grid>
 					))}

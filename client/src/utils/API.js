@@ -13,10 +13,11 @@ const API = {
 	},
 	saveProperty: function (property) {
 		const token = localStorage.getItem("token")
-		return axios.put(`/api/property`, { property }, { headers: { Authorization: "Bearer" + token } });
+		return axios.put(`/api/properties`, { property }, 
+		{ headers: { Authorization: "Bearer" + token } });
 	},
 	auth: function (data) {
-		return axios.post(`/signin`, data);
+		return axios.post("/signin", data);
 	},
 	register: function (data) {
 		return axios.post("/signup", data);
@@ -29,7 +30,7 @@ const API = {
 	},
 	deleteProperty: function (id) {
 		const token = localStorage.getItem("token");
-		return axios.delete("/api/properties/" + id, {
+		return axios.delete("/api/properties" + id, {
 			headers: { Authorization: "Bearer" + token}
 		})
 	}
