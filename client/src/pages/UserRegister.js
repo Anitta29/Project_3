@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({}));
 
 function UserRegister() {
 	const classes = useStyles();
-	const { email, password, errorMessage, authenticated } = useSelector(
+	const { email, password, errorMessage, authenticated, name } = useSelector(
 		(state) => state.auth
 	);
 	const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function UserRegister() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		dispatch(register({ email, password }));
+		dispatch(register({ email, password, name }));
 	};
 
 	if (authenticated) {
