@@ -28,18 +28,22 @@ function Sidebar() {
 							Home
 						</NavLink>
 					</li>
-					<li>
-						<NavLink
-							exact
-							to="/listings"
-							activeStyle={{
-								color: "#fff",
-							}}
-						>
-							My Listings
+					{authenticated === true && (
+						<li>
+
+							<NavLink
+								exact
+								to="/listings"
+								activeStyle={{
+									color: "#fff",
+								}}
+							>
+								My Listings
 						</NavLink>
-					</li>
+						</li>
+					)}
 					<li>
+
 						<NavLink
 							exact
 							to="/about"
