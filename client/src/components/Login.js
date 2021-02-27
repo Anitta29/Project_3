@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { login, setEmail, setPassword } from "../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
-import { SatelliteTwoTone } from "@material-ui/icons";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";

@@ -7,6 +7,7 @@ import Container from "@material-ui/core/Container";
 import { useSelector, useDispatch } from "react-redux";
 import { setFavorite, removeFavorite } from "../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
+
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
