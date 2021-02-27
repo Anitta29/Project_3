@@ -1,5 +1,18 @@
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/auth";
+import { useHistory } from "react-router-dom";
+
 function Sidebar() {
+	const { authenticated } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
+	const history = useHistory();
+
+	const handleLogout = async (event) => {
+		event.preventDefault();
+		dispatch(logout());
+		history.push("/login");
+	};
 	return (
 		<aside className="sidebar">
 			<nav className="nav">
@@ -37,17 +50,26 @@ function Sidebar() {
 							About
 						</NavLink>
 					</li>
-					<li>
-					<NavLink
-							exact
-							to="/login"
-							activeStyle={{
-								color: "#fff",
-							}}
-						>
-							Login
-						</NavLink>
-					</li>
+					{authenticated === true && (
+						<li>
+							<a href="#" onClick={handleLogout}>
+								Logout
+							</a>
+						</li>
+					)}
+					{authenticated === false && (
+						<li>
+							<NavLink
+								exact
+								to="/login"
+								activeStyle={{
+									color: "#fff",
+								}}
+							>
+								Login
+							</NavLink>
+						</li>
+					)}
 				</ul>
 			</nav>
 		</aside>

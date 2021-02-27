@@ -1,69 +1,38 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { login, setEmail, setPassword } from "../redux/auth";
+import { register, setEmail, setPassword } from "../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
-import { SatelliteTwoTone } from "@material-ui/icons";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
 import TextField from "@material-ui/core/TextField";
 import { Link, Redirect } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		maxWidth: 300,
-		textAlign: "center",
-		backgroundColor: "white",
-		color: "black",
-		marginTop: 10,
-		alignItems: "center",
-		paddingTop: 40,
-		paddingBottom: 40,
-	},
-	CardContent: {
-		backgroundColor: "red",
-		color: "black",
-		// boxShadow: "2.5px 5px 4px #000000"
-	},
-	input: {
-		marginTop: 10,
-	},
-}));
+const useStyles = makeStyles((theme) => ({}));
 
-function Login() {
+function UserRegister() {
 	const classes = useStyles();
-
-	// const [email, setEmail] = useState("");
-	// const [password, setPassword] = useState("");
-	// const [token, setToken] = useState("");
-	// const [authenticated, setAuthenticated] = useState(false);
-	const { email, password, authenticated, errorMessage } = useSelector(
+	const { email, password, errorMessage, authenticated } = useSelector(
 		(state) => state.auth
 	);
-
 	const dispatch = useDispatch();
 
-	console.log({ authenticated });
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		dispatch(register({ email, password }));
+	};
+
 	if (authenticated) {
 		return <Redirect to="/" />;
 	}
-	// useEffect(() => {
-	//     axios.get('./signup').then(data => console.log(data))
-	// }, [])
 
-	// function logUser(e) {
-	// 	e.preventDefault()
-	// 	console.log(email, password)
-	// 	axios.post("/signin", { email: email, password: password });
-	// }
 	return (
 		<Container>
 			<section className="display">
 				<Card className={classes.root}>
-					<h1 style={{ color: "black", textAlign: "center" }}>Login</h1>
+					<h1 style={{ color: "black", textAlign: "center" }}>Register</h1>
 
 					<CardContent>
 						<React.Fragment>
@@ -89,26 +58,27 @@ function Login() {
 							/>
 							{errorMessage === "" ? null : <p>{errorMessage}</p>}
 
-							<br />
 							<Button
 								className={classes.input}
 								type="submit"
 								value="Login"
 								variant="contained"
 								color="primary"
-								onClick={() => dispatch(login({ email, password }))}
+								onClick={handleSubmit}
 							>
-								Login
+								Submit
 							</Button>
+
+							<hr />
 							<br />
 							<Button
 								component={Link}
-								to={"/register"}
+								to={"/login"}
 								className={classes.input}
 								variant="contained"
 								color="primary"
 							>
-								Register
+								Login
 							</Button>
 						</React.Fragment>{" "}
 					</CardContent>
@@ -118,4 +88,4 @@ function Login() {
 	);
 }
 
-export default Login;
+export default UserRegister;
