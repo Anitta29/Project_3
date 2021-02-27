@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const axios = require("axios");
+const mongoose = require("mongoose");
+const User = mongoose.model("User");
+const requireAuth = require("../../middlewares/requireAuth");
 
 const mockResult = [
 	{
@@ -481,7 +484,7 @@ const mockResult = [
 ];
 
 router.get("/api/search/:state/:city", (req, res) => {
-	return res.json(mockResult);
+	// return res.json(mockResult);
 
 	var options = {
 		method: "GET",
@@ -512,5 +515,45 @@ router.get("/api/search/:state/:city", (req, res) => {
 			res.status(500).json(error.data);
 		});
 });
-
+router.put("/api/properties", requireAuth, (req, res) => {
+    const property = req.body.property;
+    User.updateOne({ _id: req.user._id }, { $push: { properties: property } })
+        .then(() => {
+            // saved
+            res.json({ data: "saved" });
+        })
+        .catch((err) => {
+            res.json({ error: err });
+        });
+});
+router.get("/api/properties", requireAuth, (req, res) => {
+    User.findOne({ _id: req.user._id })
+        .select("properties")
+        .then((user) => {
+            res.json(user.properties);
+        })
+        .catch((err) => {
+            res.status(500).json({ error: err });
+        });
+});
+router.delete("/api/properties/:id", requireAuth, (req, res) => {
+    User.findOne({ _id: req.user._id })
+        .then((user) => {
+            property = user.properties.filter(
+                (property) => property.listing_id !== req.params.id
+            );
+            return User.updateOne(
+                { _id: req.user._id },
+                { $set: { properties: property } }
+            );
+        })
+        .then(() => {
+            // success
+            res.json({ message: "removed" });
+        })
+        .catch((err) => {
+            res.status(500).json({ error: err });
+        });
+});
 module.exports = router;
+

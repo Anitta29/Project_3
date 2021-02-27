@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { login, setEmail, setPassword } from "../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
-import { SatelliteTwoTone } from "@material-ui/icons";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
 import TextField from "@material-ui/core/TextField";
 import { Link, Redirect } from "react-router-dom";
 

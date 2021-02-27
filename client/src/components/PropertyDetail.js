@@ -6,8 +6,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Button from "@material-ui/core/Button";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import Delete from "@material-ui/icons/Delete";
+import { useSelector, useDispatch } from "react-redux";
 
 import { makeStyles } from "@material-ui/core/styles";
+import { PlayCircleFilledWhite } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,6 +32,12 @@ const useStyles = makeStyles((theme) => ({
 		cursor: "pointer",
 		color: "white",
 	},
+	trashCan: {
+		cursor: "pointer",
+		color: "white",
+		alignItems: "right"
+	},
+
 	Button: {
 		color: "white",
 	},
@@ -36,9 +46,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function PropertyDetail({ property, onFavoriteClick }) {
+function PropertyDetail({ property, onClick, onListing }) {
 	console.log(property);
 	const classes = useStyles();
+	const { favorite, propertyViewed } = useSelector((state) => state.auth);
+    const isFavorite = favorite.indexOf(property.listing_id) > -1;
 
 	return (
 		<Card align="center" className={classes.root}>
@@ -67,13 +79,36 @@ function PropertyDetail({ property, onFavoriteClick }) {
 				>
 					More Info
 				</Button>
+				{onListing && (
+                    <Delete
+                        className={classes.trashCan}
+                        size="small"
+                        color="primary"
+                        onClick={() => onClick(property)}
+                    >
+                        Delete
+                    </Delete>
+                )}
+				{!onListing && isFavorite === false && (
+                    <FavoriteBorderIcon
+                        className={classes.favoriteIcon}
+                        size="small"
+                        color="primary"
+                        onClick={() => onClick(property)}
+                    >
 
-				<FavoriteBorderIcon
-					className={classes.favoriteIcon}
-					size="small"
-					color="primary"
-					onClick={() => onFavoriteClick(property)}
-				></FavoriteBorderIcon>
+					</FavoriteBorderIcon>
+                )}
+                {!onListing && isFavorite === true && (
+                    <FavoriteIcon
+                        className={classes.favoriteIcon}
+                        size="small"
+                        color="primary"
+                        onClick={() => {
+                            onClick(property, "remove");
+                        }}
+                    ></FavoriteIcon>
+                )}
 			</CardActions>
 		</Card>
 	);

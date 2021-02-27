@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({}));
 
 function UserLogin() {
 	return (
-		<Container>
+		<Container align="center" maxWidth={false}>
 			<section className="display">
 				<Login />
 			</section>
