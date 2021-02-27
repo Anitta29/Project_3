@@ -83,7 +83,7 @@ function Landing() {
 		
 		<Container maxWidth={false}>
 			{/* <UserLogin /> */}
-			<section className="twitter">
+			<section className="display">
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>

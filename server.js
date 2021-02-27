@@ -1,12 +1,13 @@
 //Anita
 require('./models/User');
 const express = require("express");
+const axios = require("axios");
 
 const mongoose = require("mongoose");
 const routes = require("./server/routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-// var cors = require("cors");
+var cors = require("cors");
 
 //Anita
 const authRoutes = require("./routes/authRoutes");
@@ -15,7 +16,7 @@ const requireAuth = require("./middlewares/requireAuth");
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
