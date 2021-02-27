@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Landing from "./pages/Landing";
 import MyListings from "./pages/MyListings";
 import About from "./pages/About";
@@ -10,8 +10,15 @@ import Sidebar from "./components/Sidebar";
 import "./App.css";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { checkAuth } from "./redux/auth";
 
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(checkAuth());
+	}, [dispatch]);
 	return (
 		<main className="main">
 			<Router>
