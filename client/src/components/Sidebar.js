@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/auth";
 import { useHistory } from "react-router-dom";
+import UserWelcome from "../components/UserWelcome";
 
 function Sidebar() {
 	const { authenticated } = useSelector((state) => state.auth);
@@ -56,6 +57,7 @@ function Sidebar() {
 					</li>
 					{authenticated === true && (
 						<li>
+							{authenticated === true && <UserWelcome />}
 							<a href="#" onClick={handleLogout}>
 								Logout
 							</a>
