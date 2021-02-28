@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import InfoButton from "@material-ui/core/Button";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import NotFavoritedIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Delete from "@material-ui/icons/Delete";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,10 +27,15 @@ const useStyles = makeStyles((theme) => ({
 		height: 140,
 		color: "white",
 	},
-	favoriteIcon: {
+	NotFavoritedIcon: {
 		alignItems: "right",
 		cursor: "pointer",
 		color: "white",
+	},
+	favoriteIcon: {
+		alignItems: "right",
+		cursor: "pointer",
+		color: "#F65959",
 	},
 	trashCan: {
 		cursor: "pointer",
@@ -70,7 +75,9 @@ function PropertyDetail({ property, onClick, onListing }) {
 	return (
 		<Card align="center" className={classes.root}>
 			<CardActionArea>
-				{hasViewed === true && <CheckCircle className={classes.checkedProperty} />}
+				{hasViewed === true && (
+					<CheckCircle className={classes.checkedProperty} />
+				)}
 				<CardMedia className={classes.media} image={property.thumbnail} />
 				<CardContent>
 					<h3>Beds: {property.beds}</h3>
@@ -107,12 +114,12 @@ function PropertyDetail({ property, onClick, onListing }) {
 					</Delete>
 				)}
 				{!onListing && isFavorite === false && (
-					<FavoriteBorderIcon
-						className={classes.favoriteIcon}
+					<NotFavoritedIcon
+						className={classes.NotFavoritedIcon}
 						size="small"
 						color="primary"
 						onClick={() => onClick(property)}
-					></FavoriteBorderIcon>
+					></NotFavoritedIcon>
 				)}
 				{!onListing && isFavorite === true && (
 					<FavoriteIcon
