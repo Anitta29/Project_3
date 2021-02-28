@@ -4,15 +4,14 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import Button from "@material-ui/core/Button";
+import InfoButton from "@material-ui/core/Button";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Delete from "@material-ui/icons/Delete";
 import { useSelector, useDispatch } from "react-redux";
+import { markAsViewed } from "../redux/auth";
 import CheckCircle from "@material-ui/icons/CheckCircle";
-
 import { makeStyles } from "@material-ui/core/styles";
-import { PlayCircleFilledWhite } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 	trashCan: {
 		cursor: "pointer",
 		color: "white",
-		alignItems: "right"
+		alignItems: "right",
 	},
 
 	Button: {
@@ -50,22 +49,31 @@ const useStyles = makeStyles((theme) => ({
 		top: 5,
 		right: 5,
 		color: "#24b527",
-	}
+	},
 }));
 
 function PropertyDetail({ property, onClick, onListing }) {
 	console.log(property);
 	const classes = useStyles();
+	const dispatch = useDispatch();
 	const { favorite, propertyViewed } = useSelector((state) => state.auth);
 	const isFavorite = favorite.indexOf(property.listing_id) > -1;
+	const hasViewed = propertyViewed.indexOf(property.listing_id) > -1;
 
+	console.log("******************** propertyViewed **********************");
+	console.log(propertyViewed);
+
+	// ***************** Mark as viewed Feature
+	const handleMoreClick = () => {
+		dispatch(markAsViewed(property.listing_id));
+	};
 	return (
 		<Card align="center" className={classes.root}>
 			<CardActionArea>
-				<CheckCircle  className={classes.checkedProperty}/>
+				{hasViewed === true && <CheckCircle className={classes.checkedProperty} />}
 				<CardMedia className={classes.media} image={property.thumbnail} />
 				<CardContent>
-					<h3 >Beds: {property.beds}</h3>
+					<h3>Beds: {property.beds}</h3>
 					<h3>Baths: {property.baths}</h3>
 					<h3>
 						Price: $
@@ -80,15 +88,14 @@ function PropertyDetail({ property, onClick, onListing }) {
 			</CardActionArea>
 
 			<CardActions>
-				<Button
+				<InfoButton
 					className={classes.Button}
 					href={property.rdc_web_url}
 					variant="outlined"
+					onClick={() => handleMoreClick()}
 				>
-
-
 					More Info
-				</Button>
+				</InfoButton>
 				{onListing && (
 					<Delete
 						className={classes.trashCan}
@@ -105,9 +112,7 @@ function PropertyDetail({ property, onClick, onListing }) {
 						size="small"
 						color="primary"
 						onClick={() => onClick(property)}
-					>
-
-					</FavoriteBorderIcon>
+					></FavoriteBorderIcon>
 				)}
 				{!onListing && isFavorite === true && (
 					<FavoriteIcon
