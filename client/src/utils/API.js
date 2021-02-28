@@ -24,6 +24,16 @@ const API = {
     register: function (data) {
         return axios.post("/signup", data);
     },
+    markAsViewed: function (propertyId) {
+        const token = localStorage.getItem("token");
+        return axios.put(
+            "/api/properties/" + propertyId,
+            {},
+            {
+                headers: { Authorization: "Bearer " + token },
+            }
+        )
+    },
     getUserData: function () {
         const token = localStorage.getItem("token");
         return axios.get("/api/user/data?t=" + Date.now(), {

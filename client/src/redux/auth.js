@@ -1,49 +1,51 @@
 import API from "../utils/API";
 // global state for authentification
+
 const jwt = require("jsonwebtoken");
 
 const initialState = {
-	name:"",
-	email: "",
-	password: "",
-	errorMessage: "",
-	token: "",
-	favorite:[],
-	propertyViewed:[],
-	authenticated: false,
+    name: "",
+    email: "",
+    password: "",
+    errorMessage: "",
+    token: "",
+    favorite: [],
+    propertyViewed: [],
+    authenticated: false,
 };
 
 export const register = (data) => (dispatch) => {
-	API.register(data).then((result) => {
-		dispatch({
-			type: "CLEAR_ERROR",
-		});
-		dispatch({
-			type: "LOGIN",
-			payload: result.data,
-		});
-	});
-};
-export const checkAuth = () => (dispatch) => {
-    const token = localStorage.getItem("token");
-    // API.getUserData().then((result) => {
-    if (token) {
+    API.register(data).then((result) => {
+        dispatch({
+            type: "CLEAR_ERROR",
+        });
         dispatch({
             type: "LOGIN",
-            payload: { token },
+            payload: result.data,
         });
-        // console.log("******************** result.data **********************");
-        // console.log(result.data);
-        // if (result.data) {
-        //  dispatch({
-        //      type: "INIT_USER_DATA",
-        //      payload: result.data,
-        //  });
-        // }
-    }
-    // });
+    });
 };
 
+export const checkAuth = () => (dispatch) => {
+    const token = localStorage.getItem("token");
+    API.getUserData().then((result) => {
+        if (token) {
+            dispatch({
+                type: "LOGIN",
+                payload: { token },
+            });
+            
+            console.log("******************** result.data **********************");
+            console.log(result.data);
+            if (result.data) {
+                dispatch({
+                    type: "INIT_USER_DATA",
+                    payload: result.data,
+                });
+            }
+        }
+    });
+};
 // set redux actions
 export const login = () => (dispatch, getState) => {
     const { email, password } = getState().auth;
@@ -59,14 +61,14 @@ export const login = () => (dispatch, getState) => {
             });
         })
         .then(() => {
-            // API.getUserData().then((result) => {
-            //  if (result.data) {
-            //      dispatch({
-            //          type: "INIT_USER_DATA",
-            //          payload: result.data,
-            //      });
-            //  }
-            // });
+            API.getUserData().then((result) => {
+             if (result.data) {
+                 dispatch({
+                     type: "INIT_USER_DATA",
+                     payload: result.data,
+                 });
+             }
+            });
         })
         .catch((error) => {
             dispatch({
@@ -75,36 +77,50 @@ export const login = () => (dispatch, getState) => {
         });
 };
 
-
 export const logout = () => async (dispatch) => {
-	await dispatch({
-		type: "LOGOUT",
-	});
+    await dispatch({
+        type: "LOGOUT",
+    });
 };
+
 export const setEmail = (payload) => {
-	return {
-		type: "EMAIL",
-		payload,
-	};
+    return {
+        type: "EMAIL",
+        payload,
+    };
 };
+
 export const setName = (payload) => {
     return {
         type: "NAME",
         payload,
     };
 };
+
 export const setPassword = (payload) => {
-	return {
-		type: "PASSWORD",
-		payload,
-	};
+    return {
+        type: "PASSWORD",
+        payload,
+    };
 };
+
+export const markAsViewed = (listingId) => (dispatch) => {
+    API.markAsViewed(listingId).then((result) => {
+        dispatch({
+            type: "SET_VIEWED",
+            payload: listingId
+        });
+
+    });
+};
+
 export const setFavorite = (payload) => {
     return {
         type: "SET_FAVORITE",
         payload,
     };
 };
+
 export const removeFavorite = (payload) => {
     return {
         type: "REMOVE_FAVORITE",
@@ -134,6 +150,7 @@ const reducer = (auth = initialState, action) => {
                     (propertyId) => propertyId !== action.payload
                 ),
             };
+
         // VIEWED
         case "SET_VIEWED":
             return {

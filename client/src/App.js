@@ -18,7 +18,7 @@ function App() {
 
 	useEffect(() => {
 		dispatch(checkAuth());
-	}, [dispatch]);
+	}, []);
 	return (
 		<main className="main">
 			<Router>

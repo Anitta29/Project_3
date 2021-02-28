@@ -25,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: "#312450",
 	},
 	welcomeMessage: {
-		textAlign: "center",
+		textAlign: "left",
+		marginLeft: "-11rem",
+		marginTop: "3rem",
 	},
 }));
 function Landing() {
