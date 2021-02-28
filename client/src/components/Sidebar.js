@@ -31,7 +31,6 @@ function Sidebar() {
 					</li>
 					{authenticated === true && (
 						<li>
-
 							<NavLink
 								exact
 								to="/listings"
@@ -40,11 +39,10 @@ function Sidebar() {
 								}}
 							>
 								My Listings
-						</NavLink>
+							</NavLink>
 						</li>
 					)}
 					<li>
-
 						<NavLink
 							exact
 							to="/about"
@@ -57,7 +55,7 @@ function Sidebar() {
 					</li>
 					{authenticated === true && (
 						<li>
-							{authenticated === true && <UserWelcome />}
+							<UserWelcome />
 							<a href="#" onClick={handleLogout}>
 								Logout
 							</a>
