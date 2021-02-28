@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register, setEmail, setPassword } from "../redux/auth";
+import { register, setEmail, setPassword, setName } from "../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@material-ui/core/Container";
@@ -36,6 +36,16 @@ function UserRegister() {
 
 					<CardContent>
 						<React.Fragment>
+							<TextField
+								className={classes.input}
+								label="Type your name"
+								type="name"
+								variant="outlined"
+								id="outlined-basic"
+								validate
+								value={name}
+								onChange={(e) => dispatch(setName(e.target.value))}
+							/>
 							<TextField
 								className={classes.input}
 								label="Type your email"
