@@ -1,11 +1,11 @@
-require("./server/models/User");
+require("./models/User");
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./server/routes/property");
+const routes = require("./routes/property");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const authRoutes = require("./server/routes/authRoutes");
-const requireAuth = require("./middlewares/requireAuth");
+const authRoutes = require("./routes/authRoutes");
+const requireAuth = require("./middlewares/requireAuth.js");
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
 
   //if no headers, user isn't logged in, give an error
 	if (!authorization) {
-    // return res.redirect("/login")
+    return res.redirect("/login")
 		return res.status(401).send({ error: "You must be logged in" });
 	}
 

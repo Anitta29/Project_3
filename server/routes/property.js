@@ -2,7 +2,7 @@ const router = require("express").Router();
 const axios = require("axios");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
-const requireAuth = require("../../middlewares/requireAuth");
+const requireAuth = require("../middlewares/requireAuth");
 
 const mockResult = [
 	{
@@ -554,6 +554,36 @@ router.delete("/api/properties/:id", requireAuth, (req, res) => {
         .catch((err) => {
             res.status(500).json({ error: err });
         });
+});
+router.put("/api/properties/:id", requireAuth, (req, res) => {
+	// add the listing_id to propertyViewed array in mongodb
+	User.updateOne(
+		{ _id: req.user._id },
+		{ $addToSet: { propertyViewed: req.params.id } }
+	)
+		.then(() => {
+			// saved
+			// res.json({ data: "saved" }); // content-type: application/json
+			res.send('saved') // content-type: text/plain
+		})
+		.catch((err) => {
+			res.status(500).json({ error: err });
+		});
+});
+router.get("/api/user/data", requireAuth, (req, res) => {
+	User.findOne({ _id: req.user._id })
+		.select("properties propertyViewed")
+		.then((user) => {
+			// return result as json object
+			res.json({
+				// have to map properties to return only the listing_id instead of the whole property object
+				favorite: user.properties.map((property) => property.listing_id),
+				propertyViewed: user.propertyViewed,
+			});
+		})
+		.catch((err) => {
+			res.status(500).json({ error: err });
+		});
 });
 module.exports = router;
 

@@ -19,6 +19,7 @@ const jwt = require("jsonwebtoken");
 
 router.post("/signin", async (req, res) => {
 	const { email, password } = req.body;
+	console.log(req.body)
 
 	if (!email || !password) {
 		//if no email or password provided, return error
@@ -37,6 +38,7 @@ router.post("/signin", async (req, res) => {
 		// if success, generate token with user id
 		await user.comparePassword(password);
 		const token = jwt.sign({ userId: user._id }, "MY_SECRET_KEY");
+		console.log(token)
 		res.send({ token });
 	} catch (err) {
 		//if not, return error

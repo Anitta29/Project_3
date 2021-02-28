@@ -11,6 +11,7 @@ import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setFavorite, removeFavorite } from "../redux/auth";
+
 // import UserLogin from "../components/UserLogin";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: "#312450",
 	},
 	welcomeMessage: {
-		textAlign: "center",
+		textAlign: "left",
+		marginLeft: "-11rem",
+		marginTop: "3rem",
 	},
 }));
 function Landing() {
@@ -95,7 +98,7 @@ function Landing() {
 
 	return (
 		<Container align="center" maxWidth={false}>
-			{/* <UserLogin /> */}
+
 			<section className="display">
 				<Grid container spacing={3}>
 					<Grid item xs={12}>
