@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/auth";
 import { useHistory } from "react-router-dom";
+import UserWelcome from "../components/UserWelcome";
 
 function Sidebar() {
 	const { authenticated } = useSelector((state) => state.auth);
@@ -30,7 +31,6 @@ function Sidebar() {
 					</li>
 					{authenticated === true && (
 						<li>
-
 							<NavLink
 								exact
 								to="/listings"
@@ -39,11 +39,10 @@ function Sidebar() {
 								}}
 							>
 								My Listings
-						</NavLink>
+							</NavLink>
 						</li>
 					)}
 					<li>
-
 						<NavLink
 							exact
 							to="/about"
@@ -56,6 +55,7 @@ function Sidebar() {
 					</li>
 					{authenticated === true && (
 						<li>
+							<UserWelcome />
 							<a href="#" onClick={handleLogout}>
 								Logout
 							</a>
