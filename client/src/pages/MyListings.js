@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
-import PropertyDetail from "../components/PropertyDetail";
+import PropertyCard from "../components/PropertyCard/PropertyCard";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { useDispatch } from "react-redux";
@@ -39,7 +39,7 @@ function MyListings() {
 				<Grid container spacing={3}>
 					{properties.map((property, index) => (
 						<Grid key={index} item xs={12} md={6} lg={3}>
-							<PropertyDetail
+							<PropertyCard
 								property={property}
 								onClick={() => handleBtnClick(property)}
 								onListing={true}

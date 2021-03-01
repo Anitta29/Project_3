@@ -1,5 +1,5 @@
 import React from "react";
-import { login, setEmail, setPassword } from "../redux/auth";
+import { register, setEmail, setPassword, setName } from "../../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@material-ui/core/Container";
@@ -25,40 +25,41 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function Login() {
+function UserRegister() {
 	const classes = useStyles();
-
-	// const [email, setEmail] = useState("");
-	// const [password, setPassword] = useState("");
-	// const [token, setToken] = useState("");
-	// const [authenticated, setAuthenticated] = useState(false);
-	const { email, password, authenticated, errorMessage } = useSelector(
+	const { email, password, errorMessage, authenticated, name } = useSelector(
 		(state) => state.auth
 	);
-
 	const dispatch = useDispatch();
 
-	console.log({ authenticated });
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		dispatch(register({ email, password, name }));
+	};
+
 	if (authenticated) {
 		return <Redirect to="/" />;
 	}
-	// useEffect(() => {
-	//     axios.get('./signup').then(data => console.log(data))
-	// }, [])
 
-	// function logUser(e) {
-	// 	e.preventDefault()
-	// 	console.log(email, password)
-	// 	axios.post("/signin", { email: email, password: password });
-	// }
 	return (
 		<Container>
 			<section className="display">
 				<Card className={classes.root}>
-					<h1 style={{ color: "black", textAlign: "center" }}>Login</h1>
+					<h1 style={{ color: "black", textAlign: "center" }}>Register</h1>
 
 					<CardContent>
 						<React.Fragment>
+							<TextField
+								className={classes.input}
+								label="Type your name"
+								type="name"
+								variant="outlined"
+								id="outlined-basic"
+								validate
+								value={name}
+								onChange={(e) => dispatch(setName(e.target.value))}
+							/>
 							<TextField
 								className={classes.input}
 								label="Type your email"
@@ -81,26 +82,26 @@ function Login() {
 							/>
 							{errorMessage === "" ? null : <p>{errorMessage}</p>}
 
-							<br />
 							<Button
 								className={classes.input}
 								type="submit"
 								value="Login"
 								variant="contained"
 								color="primary"
-								onClick={() => dispatch(login({ email, password }))}
+								onClick={handleSubmit}
 							>
-								Login
+								Submit
 							</Button>
+
 							<br />
 							<Button
 								component={Link}
-								to={"/register"}
+								to={"/login"}
 								className={classes.input}
 								variant="contained"
 								color="primary"
 							>
-								Register
+								Login
 							</Button>
 						</React.Fragment>{" "}
 					</CardContent>
@@ -110,4 +111,4 @@ function Login() {
 	);
 }
 
-export default Login;
+export default UserRegister;

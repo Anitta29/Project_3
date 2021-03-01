@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import SearchArea from "../components/SearchArea";
+import SearchBar from "../components/SearchBar/SearchBar";
 import API from "../utils/API";
-import PropertyDetail from "../components/PropertyDetail";
+import PropertyCard from "../components/PropertyCard/PropertyCard";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 		position: "relative",
 		marginBottom: 50,
 	},
-	searchArea: {
+	SearchBar: {
 		position: "absolute",
 		top: "45%",
 		width: "100%",
@@ -110,7 +110,7 @@ function Landing() {
 						<Grid item xs={12}>
 							<div className={classes.carousel}>
 								<MyCarousel />
-								<div className={classes.searchArea}>
+								<div className={classes.SearchBar}>
 									<Typography
 										variant="h4"
 										gutterBottom
@@ -119,7 +119,7 @@ function Landing() {
 										"Welcome to WOW Realtor! <br></br>To start select the
 										desired location above."
 									</Typography>
-									<SearchArea
+									<SearchBar
 										state={search.state}
 										city={search.city}
 										handleInputChange={handleInputChange}
@@ -131,7 +131,7 @@ function Landing() {
 							<Grid container spacing={3}>
 								{search.result.map((property, index) => (
 									<Grid key={index} item xs={12} md={6} lg={3}>
-										<PropertyDetail
+										<PropertyCard
 											property={property}
 											onClick={handleBtnClick}
 										/>
