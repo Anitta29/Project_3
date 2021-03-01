@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Avatar, Typography } from "@material-ui/core";
-
-// import Section from "@material-ui/core/Section";
+import { Avatar } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -151,34 +149,7 @@ function AboutUs(property, onFavoriteClick) {
 							</CardActions>
 						</Card>
 					</Grid>
-					<Grid align="center" item xs={12} md={4} lg={4}>
-						<Card className={classes.root}>
-							<CardActionArea>
-								<CardContent>
-									<h2>Isha Khosla</h2>
-									<div className="img-size">
-										<Avatar className={classes.avatar} src={ishas} alt="Isha" />
-									</div>
-								</CardContent>
-							</CardActionArea>
-							<CardActions className={classes.CardActions}>
-								<GitHubIcon
-									className={classes.favoriteIcon}
-									onClick={() =>
-										window.location.replace("https://github.com/ishakhosla131")
-									}
-								></GitHubIcon>
-								<LinkedInIcon
-									className={classes.favoriteIcon}
-									onClick={() =>
-										window.location.replace(
-											"https://www.linkedin.com/in/isha-khosla-a4a40b191"
-										)
-									}
-								></LinkedInIcon>
-							</CardActions>
-						</Card>
-					</Grid>
+
 					<Grid align="center" item xs={12} md={4} lg={4}>
 						<Card className={classes.root}>
 							<CardActionArea>

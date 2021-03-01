@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { login, setEmail, setPassword } from "../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,15 +15,10 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: "center",
 		backgroundColor: "white",
 		color: "black",
-		marginTop: 10,
+		marginTop: "20%",
 		alignItems: "center",
 		paddingTop: 40,
 		paddingBottom: 40,
-	},
-	CardContent: {
-		backgroundColor: "red",
-		color: "black",
-		// boxShadow: "2.5px 5px 4px #000000"
 	},
 	input: {
 		marginTop: 10,
