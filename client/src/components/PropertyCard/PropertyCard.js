@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PropertyCard({ property, onClick, onListing }) {
-	console.log(property);
+	console.log(property, "property card here");
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const { favorite, propertyViewed } = useSelector((state) => state.auth);
@@ -86,7 +86,7 @@ function PropertyCard({ property, onClick, onListing }) {
 						Price: $
 						{property.price.toFixed().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
 					</h3>
-					<h3>Sqft: {property.lot_size?.size || 0} sqft</h3>
+					<h3>Size: {property.building_size?.size || 0} sqft</h3>
 					<h3>
 						Address: {property.address.line}, {property.address.city},{" "}
 						{property.address.state_code} {property.postal_code}

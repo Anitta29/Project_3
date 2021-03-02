@@ -11,6 +11,12 @@ html {
 	background: #312450;
 	font-size: 0.65em;
 }
+@media screen and (max-width: 600px) {
+	.sidebar {
+		width: 100%;
+		display: none;
+	}
+}
 .nav {
 	position: relative;
 	margin: 0 15%;
@@ -60,6 +66,16 @@ html {
 	float: right;
 	height: 100vh;
 }
+
+@media screen and (max-width: 600px) {
+	.display {
+		position: relative;
+		width: 100%;
+		float: right;
+		height: 100vh;
+	}
+}
+
 .display .container {
 	display: flex;
 	flex-direction: column;

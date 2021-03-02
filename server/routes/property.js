@@ -602,7 +602,7 @@ const mockResult = [
 ];
 
 router.get("/api/search/:state/:city", (req, res) => {
-	return res.json(mockResult);
+	// return res.json(mockResult);
 
 	var options = {
 		method: "GET",
@@ -616,7 +616,7 @@ router.get("/api/search/:state/:city", (req, res) => {
 		},
 		headers: {
 			// Enter API KEY HERE
-			"x-rapidapi-key": "*****API KEY HERE*****   ",
+			"x-rapidapi-key": "b37d6dc463msh03ec19aac33109ep1487c6jsn121864351e59",
 
 			"x-rapidapi-host": "realtor.p.rapidapi.com",
 		},
