@@ -2,7 +2,6 @@ import React from "react";
 // import "../styles/search.css";
 
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
@@ -27,12 +26,22 @@ const useStyles = makeStyles((theme) => ({
 		margin: 20,
 	},
 	searchState: {
-		marginLeft: 15,
-		textAlign: "left",
-		color: "white",
+		// marginLeft: 15,
+		// textAlign: "left",
+		color: "black",
 	},
 	searchCity: {
 		color: "white",
+	},
+	stateSelect: {
+		backgroundColor: "white",
+	},
+	cityInput: {
+		backgroundColor: "white",
+		width: "50%",
+		"& input": {
+			textAlign: "center",
+		},
 	},
 }));
 
@@ -47,26 +56,26 @@ function SearchForm(props) {
 	return (
 		<div>
 			<FormControl className={classes.formControl}>
-				<InputLabel
+				{/* <InputLabel
 					className={classes.searchState}
 					id="demo-simple-select-outlined-label"
 				>
 					Select a state
-				</InputLabel>
+				</InputLabel> */}
 
 				<Select
 					name="state"
+					className={classes.stateSelect}
 					variant="outlined"
 					labelId="demo-simple-select-outlined-label"
 					id="demo-simple-select-outlined"
+					value={props.state}
 					onChange={props.handleInputChange}
-					label="Select a state"
 				>
 					{/* <select
 					name="state"
 					id="state"
 					onChange={props.handleInputChange}
-					value={props.state}
 					className="form-control"
 				> */}
 					<MenuItem value={"AL"}>Alabama</MenuItem>
@@ -129,10 +138,9 @@ function SearchForm(props) {
 					value={props.city}
 					name="city"
 					type="text"
-					className={classes.formControl}
+					className={classes.cityInput}
 					placeholder="Enter city"
 					id="city"
-					label="Enter city"
 					variant="outlined"
 				/>
 			</form>

@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../redux/auth";
+import { logout } from "../../redux/auth";
 import { useHistory } from "react-router-dom";
-import UserWelcome from "../components/UserWelcome";
+import UserWelcome from "../UserWelcome/UserWelcome";
 
 function Sidebar() {
 	const { authenticated } = useSelector((state) => state.auth);

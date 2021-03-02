@@ -4,7 +4,7 @@ import MyListings from "./pages/MyListings";
 import About from "./pages/About";
 import UserLogin from "./pages/UserLogin";
 import UserRegister from "./pages/UserRegister";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/SideBar/SideBar";
 // import UserLogin from "./pages/UserLogin";
 
 import "./App.css";
