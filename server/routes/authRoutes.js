@@ -17,6 +17,7 @@ router.post("/signup", async (req, res) => {
 	}
 });
 
+// on submit from the login page will send request to this API
 router.post("/signin", async (req, res) => {
 	const { email, password } = req.body;
 	console.log(req.body);
@@ -38,8 +39,8 @@ router.post("/signin", async (req, res) => {
 		// if success, generate token with user id
 		await user.comparePassword(password);
 		const token = jwt.sign(
-			{ userId: user._id, name: user.name },
-			"MY_SECRET_KEY"
+			{ userId: user._id, name: user.name }, // data you want to add into the token
+			"MY_SECRET_KEY" // secreit key need to match when you are validing the token, secret token can be put into ENVIRONMENT VARIABLE so it is not expose
 		);
 		console.log(token);
 		res.send({ token });

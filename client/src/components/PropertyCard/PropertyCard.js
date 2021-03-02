@@ -9,7 +9,7 @@ import NotFavoritedIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Delete from "@material-ui/icons/Delete";
 import { useSelector, useDispatch } from "react-redux";
-import { markAsViewed } from "../redux/auth";
+import { markAsViewed } from "../../redux/auth";
 import CheckCircle from "@material-ui/icons/CheckCircle";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 	Button: {
 		color: "white",
 	},
-	propertyDetails: {
+	PropertyCard: {
 		marging: 0,
 	},
 	checkedProperty: {
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function PropertyDetail({ property, onClick, onListing }) {
+function PropertyCard({ property, onClick, onListing }) {
 	console.log(property);
 	const classes = useStyles();
 	const dispatch = useDispatch();
@@ -136,4 +136,4 @@ function PropertyDetail({ property, onClick, onListing }) {
 	);
 }
 
-export default PropertyDetail;
+export default PropertyCard;

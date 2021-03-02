@@ -7,6 +7,124 @@ const requireAuth = require("../middlewares/requireAuth");
 const mockResult = [
 	{
 		property_id: "M3982027198",
+		listing_id: "2925927859",
+		products: ["core.broker", "co_broke"],
+		rdc_web_url:
+			"https://www.realtor.com/realestateandhomes-detail/118-Suffolk-St-4AB_New-York_NY_10002_M39820-27198",
+		prop_type: "condo",
+		prop_sub_type: "coop",
+		address: {
+			city: "New York",
+			line: "118 Suffolk St Unit 4AB",
+			postal_code: "10002",
+			state_code: "NY",
+			state: "New York",
+			county: "New York",
+			fips_code: "36061",
+			lat: 40.718987,
+			lon: -73.985857,
+			neighborhood_name: "Lower East Side",
+		},
+		branding: {
+			listing_office: {
+				list_item: {
+					name: "Halstead Real Estate - 831 Broadway",
+					photo: null,
+					phone: null,
+					slogan: null,
+					show_realtor_logo: false,
+					link: null,
+					accent_color: null,
+				},
+			},
+		},
+		prop_status: "for_sale",
+		price: 1150000,
+		baths_half: 1,
+		baths_full: 1,
+		baths: 2,
+		beds: 3,
+		agents: [
+			{
+				primary: true,
+				photo: null,
+				name: "",
+			},
+		],
+		office: {
+			id: "d5a6563f3e8ec1eeb85fe2e36c0c2729",
+			name: "Halstead Real Estate - 831 Broadway",
+		},
+		last_update: "2021-02-10T18:08:17Z",
+		client_display_flags: {
+			presentation_status: "for_sale",
+			is_showcase: false,
+			lead_form_phone_required: true,
+			price_change: 0,
+			is_co_broke_email: true,
+			has_open_house: false,
+			is_co_broke_phone: false,
+			is_new_listing: true,
+			is_new_plan: false,
+			is_turbo: false,
+			is_office_standard_listing: false,
+			suppress_map_pin: false,
+			show_contact_a_lender_in_lead_form: false,
+			show_veterans_united_in_lead_form: false,
+			is_showcase_choice_enabled: false,
+		},
+		lead_forms: {
+			form: {
+				name: {
+					required: true,
+					minimum_character_count: 1,
+				},
+				email: {
+					required: true,
+					minimum_character_count: 5,
+				},
+				phone: {
+					required: true,
+					minimum_character_count: 10,
+					maximum_character_count: 11,
+				},
+				message: {
+					required: false,
+					minimum_character_count: 0,
+				},
+				show: true,
+			},
+			show_agent: false,
+			show_broker: false,
+			show_builder: false,
+			show_contact_a_lender: false,
+			show_veterans_united: false,
+			form_type: "classic",
+			lead_type: "co_broke",
+			is_lcm_enabled: false,
+			flip_the_market_enabled: false,
+			show_text_leads: true,
+			cashback_enabled: false,
+			smarthome_enabled: false,
+		},
+		photo_count: 14,
+		thumbnail:
+			"https://ap.rdcpix.com/f9ad75dfbc3c8cea90c66e7cb0bbb6cel-m2331328061x.jpg",
+		page_no: 1,
+		rank: 1,
+		list_tracking:
+			"type|property|data|prop_id|3982027198|list_id|2925928859|page|rank|list_branding|listing_agent|listing_office|advertiser_id|office|property_status|product_code|advantage_code^1|1|0|1|1C7YN|35T|G|4^^$0|1|2|$3|4|5|6|7|H|8|I|9|$A|J|B|K]|C|$D|L]|E|M|F|N|G|O]]",
+		mls: {
+			name: "TerraHoldings",
+			id: "HALS20678615",
+			plan_id: null,
+			abbreviation: "TENY",
+			type: "mls",
+		},
+		data_source_name: "mls",
+	},
+	{
+		property_id: "M3982027198",
 		listing_id: "2925928859",
 		products: ["core.broker", "co_broke"],
 		rdc_web_url:
@@ -498,8 +616,7 @@ router.get("/api/search/:state/:city", (req, res) => {
 		},
 		headers: {
 			// Enter API KEY HERE
-			"x-rapidapi-key": "29b6757619mshb62c307f6702ac0p19aefbjsn504972868988",
-			// "x-rapidapi-key": "api_715c40ae-e209-4f58-92a1-1cd60c2e6e0f",
+			"x-rapidapi-key": "*****API KEY HERE*****   ",
 
 			"x-rapidapi-host": "realtor.p.rapidapi.com",
 		},
@@ -516,44 +633,44 @@ router.get("/api/search/:state/:city", (req, res) => {
 		});
 });
 router.put("/api/properties", requireAuth, (req, res) => {
-    const property = req.body.property;
-    User.updateOne({ _id: req.user._id }, { $push: { properties: property } })
-        .then(() => {
-            // saved
-            res.json({ data: "saved" });
-        })
-        .catch((err) => {
-            res.json({ error: err });
-        });
+	const property = req.body.property;
+	User.updateOne({ _id: req.user._id }, { $push: { properties: property } })
+		.then(() => {
+			// saved
+			res.json({ data: "saved" });
+		})
+		.catch((err) => {
+			res.json({ error: err });
+		});
 });
 router.get("/api/properties", requireAuth, (req, res) => {
-    User.findOne({ _id: req.user._id })
-        .select("properties")
-        .then((user) => {
-            res.json(user.properties);
-        })
-        .catch((err) => {
-            res.status(500).json({ error: err });
-        });
+	User.findOne({ _id: req.user._id })
+		.select("properties")
+		.then((user) => {
+			res.json(user.properties);
+		})
+		.catch((err) => {
+			res.status(500).json({ error: err });
+		});
 });
 router.delete("/api/properties/:id", requireAuth, (req, res) => {
-    User.findOne({ _id: req.user._id })
-        .then((user) => {
-            property = user.properties.filter(
-                (property) => property.listing_id !== req.params.id
-            );
-            return User.updateOne(
-                { _id: req.user._id },
-                { $set: { properties: property } }
-            );
-        })
-        .then(() => {
-            // success
-            res.json({ message: "removed" });
-        })
-        .catch((err) => {
-            res.status(500).json({ error: err });
-        });
+	User.findOne({ _id: req.user._id })
+		.then((user) => {
+			property = user.properties.filter(
+				(property) => property.listing_id !== req.params.id
+			);
+			return User.updateOne(
+				{ _id: req.user._id },
+				{ $set: { properties: property } }
+			);
+		})
+		.then(() => {
+			// success
+			res.json({ message: "removed" });
+		})
+		.catch((err) => {
+			res.status(500).json({ error: err });
+		});
 });
 router.put("/api/properties/:id", requireAuth, (req, res) => {
 	// add the listing_id to propertyViewed array in mongodb
@@ -564,7 +681,7 @@ router.put("/api/properties/:id", requireAuth, (req, res) => {
 		.then(() => {
 			// saved
 			// res.json({ data: "saved" }); // content-type: application/json
-			res.send('saved') // content-type: text/plain
+			res.send("saved"); // content-type: text/plain
 		})
 		.catch((err) => {
 			res.status(500).json({ error: err });
@@ -586,4 +703,3 @@ router.get("/api/user/data", requireAuth, (req, res) => {
 		});
 });
 module.exports = router;
-
