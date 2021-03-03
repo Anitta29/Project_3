@@ -49,10 +49,18 @@ function AboutUs(property, onFavoriteClick) {
 	const classes = useStyles();
 
 	return (
-		<Container>
+		<Container align="center" maxWidth={false}>
 			<section className="display">
 				<div class="title">
-					<h1>Meet the Team</h1>
+					<h1
+						style={{
+							padding: 20,
+							fontFamily:
+								"Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+						}}
+					>
+						Meet the Team
+					</h1>
 				</div>
 				<Grid container spacing={4}>
 					<Grid align="center" item xs={12} md={4} lg={4}>
