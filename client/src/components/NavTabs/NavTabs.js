@@ -5,24 +5,21 @@ import { useSelector, useDispatch } from "react-redux";
 import UserWelcome from "../UserWelcome/UserWelcome";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../redux/auth";
-
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
-import WorkIcon from "@material-ui/icons/Work";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import PersonIcon from "@material-ui/icons/Person";
 import HomeIcon from "@material-ui/icons/Home";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
 	// root: {
@@ -33,26 +30,14 @@ const useStyles = makeStyles((theme) => ({
 
 	menuButton: {
 		marginRight: theme.spacing(2),
-		[theme.breakpoints.up("sm")]: {
-			display: "none",
-		},
-	},
-	desktopBtn: {
-		[theme.breakpoints.down("sm")]: {
-			display: "none",
-		},
-		[theme.breakpoints.up("md")]: {
-			display: "block",
-		},
 	},
 
 	root: {
+		[theme.breakpoints.up("sm")]: {
+			display: "none",
+		},
 		flexGrow: 1,
 		backgroundColor: "red",
-	},
-
-	title: {
-		flexGrow: 1,
 	},
 	drawer: {
 		width: 300,
@@ -117,34 +102,13 @@ function NavTabs({ onToggle }) {
 							<MenuIcon />
 						</IconButton>
 						{authenticated === true && (
-							<li className={classes.loginToolBar}>
+							<div className={classes.loginToolBar}>
 								<UserWelcome />
-								<Link href="#" onClick={handleLogout}>
+								<ExitToAppIcon href="#" onClick={handleLogout}>
 									Logout
-								</Link>
-							</li>
+								</ExitToAppIcon>
+							</div>
 						)}
-						<div className={classes.desktopBtn}>
-							{/* <Button variant="containedPrimary" component={Link} to="/">
-								HOME
-							</Button>
-
-							<Button variant="containedPrimary" component={Link} to="/about">
-								ABOUT
-							</Button>
-
-							<Button variant="containedPrimary" component={Link} to="/contact">
-								CONTACT
-							</Button>
-
-							<Button
-								variant="containedPrimary"
-								component={Link}
-								to="/portifolio"
-							>
-								PORTIFOLIO
-							</Button> */}
-						</div>
 					</Toolbar>
 				</AppBar>
 			</div>
@@ -168,6 +132,20 @@ function NavTabs({ onToggle }) {
 								</ListItemIcon>
 								<ListItemText primary={"HOME"} />
 							</ListItem>
+							{authenticated === true && <hr></hr>}
+							{authenticated === true && (
+								<ListItem button component={Link} to="/listings">
+									<ListItemIcon>
+										<FavoriteIcon
+											activeStyle={{
+												color: "#fff",
+											}}
+											className={classes.iconStyle}
+										/>
+									</ListItemIcon>
+									<ListItemText primary={"MY LISTINGS"} />
+								</ListItem>
+							)}
 							<hr></hr>
 							<ListItem button component={Link} to="/about">
 								<ListItemIcon>
