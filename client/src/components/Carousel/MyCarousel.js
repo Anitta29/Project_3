@@ -31,6 +31,7 @@ function MyCarousel(images) {
 			<AutoplaySlider
 				animation="cubeAnimation"
 				play={true}
+				bullets={false} // remove the circle paging
 				cancelOnInteraction={false} // should stop playing on user interaction
 				interval={4000}
 			>

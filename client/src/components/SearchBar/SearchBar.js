@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	button: {
 		width: "20%",
-		margin: 20,
+		margin: 0,
 	},
 	searchState: {
 		// marginLeft: 15,
@@ -155,8 +155,8 @@ function SearchForm(props) {
 					id="city"
 				/> */}
 
-			<br />
 			<Button
+				className={classes.button}
 				onClick={props.handleFormSubmit}
 				variant="contained"
 				color="primary"

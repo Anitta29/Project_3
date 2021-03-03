@@ -11,6 +11,12 @@ html {
 	background: #312450;
 	font-size: 0.65em;
 }
+@media screen and (max-width: 600px) {
+	.sidebar {
+		width: 100%;
+		display: none;
+	}
+}
 .nav {
 	position: relative;
 	margin: 0 15%;
@@ -60,6 +66,16 @@ html {
 	float: right;
 	height: 100vh;
 }
+
+@media screen and (max-width: 600px) {
+	.display {
+		position: relative;
+		width: 100%;
+		float: right;
+		height: 100vh;
+	}
+}
+
 .display .container {
 	display: flex;
 	flex-direction: column;
@@ -105,4 +121,24 @@ html {
 
 .MuiInputBase-input {
 	color: red;
+}
+
+.SearchBar {
+	position: absolute;
+	top: 30%;
+	width: 100%;
+	z-index: 3;
+}
+
+@media screen and (max-width: 1000px) {
+	.SearchBar {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 3;
+	}
+}
+
+.test {
+	background-color: #1c152e;
 }

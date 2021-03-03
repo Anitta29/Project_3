@@ -6,6 +6,7 @@ import UserLogin from "./pages/UserLogin";
 import UserRegister from "./pages/UserRegister";
 import Sidebar from "./components/SideBar/SideBar";
 // import UserLogin from "./pages/UserLogin";
+import NavTabs from "./components/NavTabs/NavTabs.js";
 
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
 		<main className="main">
 			<Router>
 				<Sidebar />
+				<NavTabs />
 
 				<Route exact path="/" component={Landing} />
 				<Route exact path="/listings" component={MyListings} />

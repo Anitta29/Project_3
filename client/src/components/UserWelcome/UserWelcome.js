@@ -6,6 +6,8 @@ const useStyles = makeStyles((theme) => ({
 	welcomeMessage: {
 		color: "white",
 		fontSize: 15,
+		fontFamily:
+			"Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 	},
 }));
 

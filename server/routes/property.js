@@ -616,7 +616,7 @@ router.get("/api/search/:state/:city", (req, res) => {
 		},
 		headers: {
 			// Enter API KEY HERE
-			"x-rapidapi-key": "*****API KEY HERE*****   ",
+			"x-rapidapi-key": "",
 
 			"x-rapidapi-host": "realtor.p.rapidapi.com",
 		},

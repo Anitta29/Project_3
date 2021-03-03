@@ -5,7 +5,18 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { useDispatch } from "react-redux";
 import { removeFavorite } from "../redux/auth";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+	listingsContainer: {
+		border: "0.5px solid gray",
+		padding: 20,
+	},
+}));
+
 function MyListings() {
+	const classes = useStyles();
+
 	// Setting our component's initial state
 	const [properties, setProperties] = useState([]);
 	const dispatch = useDispatch();
@@ -35,18 +46,29 @@ function MyListings() {
 	return (
 		<Container align="center" maxWidth={false}>
 			<section className="display">
-				<h1>My Listing</h1>
-				<Grid container spacing={3}>
-					{properties.map((property, index) => (
-						<Grid key={index} item xs={12} md={6} lg={3}>
-							<PropertyCard
-								property={property}
-								onClick={() => handleBtnClick(property)}
-								onListing={true}
-							/>
-						</Grid>
-					))}
-				</Grid>
+				<h1
+					style={{
+						padding: 20,
+						fontFamily:
+							"Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+					}}
+				>
+					My Listing
+				</h1>
+
+				<div className={classes.listingsContainer}>
+					<Grid container spacing={3}>
+						{properties.map((property, index) => (
+							<Grid key={index} item xs={12} md={6} lg={3}>
+								<PropertyCard
+									property={property}
+									onClick={() => handleBtnClick(property)}
+									onListing={true}
+								/>
+							</Grid>
+						))}
+					</Grid>
+				</div>
 			</section>
 		</Container>
 	);

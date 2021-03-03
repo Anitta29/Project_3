@@ -17,30 +17,40 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 		position: "relative",
+		padding: "0 15px",
+	},
+	container: {
+		paddingLeft: 0,
+		paddingRight: 0,
+		paddingBottom: 100,
 	},
 	carousel: {
 		position: "relative",
 		marginBottom: 50,
 	},
-	SearchBar: {
-		position: "absolute",
-		top: "45%",
-		width: "100%",
-		zIndex: "3",
-	},
 	welcomeMessage: {
 		color: "white",
-		marginBotton: 20,
 		fontFamily:
 			"Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 		fontWeight: "bold",
+		fontSize: "25px",
+		padding: "20px",
+		margin: 0,
+	},
+	Mycarousel: {
+		position: "absolute",
+		width: "100%",
+		height: "100%",
+		backgroundColor: "#000",
+		opacity: ".7",
+		zIndex: 3,
 	},
 }));
 function Landing() {
 	const classes = useStyles();
 	const [search, setSearch] = useState({
 		state: "NY",
-		city: "Manhattan",
+		city: "",
 		result: [],
 	});
 	const history = useHistory();
@@ -72,7 +82,6 @@ function Landing() {
 		event.preventDefault();
 		searchProperties(search.state, search.city);
 	};
-
 	const handleBtnClick = (property, isRemoved) => {
 		if (authenticated === false) {
 			return history.push("/login");
@@ -90,7 +99,7 @@ function Landing() {
 	};
 
 	useEffect(() => {
-		API.search(search.state, search.city).then((result) => {
+		API.search(search.state, "Manhattan").then((result) => {
 			const propertyWithImage = result.data.filter(
 				(property) => property.thumbnail
 			);
@@ -103,31 +112,32 @@ function Landing() {
 	}, []);
 
 	return (
-		<Container align="center" maxWidth={false}>
+		<Container align="center" maxWidth={false} className={classes.container}>
 			<section className="display">
+				<div className={classes.carousel}>
+					<MyCarousel className={classes.Mycarousel} />
+					<div className="SearchBar">
+						<Typography
+							variant="h4"
+							gutterBottom
+							className={classes.welcomeMessage}
+						>
+							"Welcome to WOW Realtor! <br></br>
+							<span style={{ fontSize: "15px" }}>
+								To start enter the desired location below."
+							</span>
+						</Typography>
+						<SearchBar
+							state={search.state}
+							city={search.city}
+							handleInputChange={handleInputChange}
+							handleFormSubmit={handleFormSubmit}
+						/>
+					</div>
+				</div>
 				<div className={classes.root}>
 					<Grid container spacing={3}>
 						<Grid item xs={12}>
-							<div className={classes.carousel}>
-								<MyCarousel />
-								<div className={classes.SearchBar}>
-									<Typography
-										variant="h4"
-										gutterBottom
-										className={classes.welcomeMessage}
-									>
-										"Welcome to WOW Realtor! <br></br>To start select the
-										desired location above."
-									</Typography>
-									<SearchBar
-										state={search.state}
-										city={search.city}
-										handleInputChange={handleInputChange}
-										handleFormSubmit={handleFormSubmit}
-									/>
-								</div>
-							</div>
-
 							<Grid container spacing={3}>
 								{search.result.map((property, index) => (
 									<Grid key={index} item xs={12} md={6} lg={3}>
