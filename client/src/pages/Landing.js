@@ -124,7 +124,7 @@ function Landing() {
 						>
 							"Welcome to WOW Realtor! <br></br>
 							<span style={{ fontSize: "15px" }}>
-								To start enter the desired location above."
+								To start enter the desired location below."
 							</span>
 						</Typography>
 						<SearchBar

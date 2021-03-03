@@ -68,6 +68,18 @@ const useStyles = makeStyles((theme) => ({
 		listStyle: "none",
 		width: "100%",
 		textDecoration: "none",
+		fontSize: "15px",
+		marginBottom: "10px",
+		marginRight: "20px",
+	},
+	logOutIcon: {
+		position: "absolute",
+		top: 25,
+		right: 15,
+		fontSize: "20px",
+	},
+	sigOutButton: {
+		cursor: "pointer",
 	},
 }));
 
@@ -104,9 +116,12 @@ function NavTabs({ onToggle }) {
 						{authenticated === true && (
 							<div className={classes.loginToolBar}>
 								<UserWelcome />
-								<ExitToAppIcon href="#" onClick={handleLogout}>
-									Logout
-								</ExitToAppIcon>
+								<div className={classes.sigOutButton}>Sign Out</div>{" "}
+								<ExitToAppIcon
+									className={classes.logOutIcon}
+									href="#"
+									onClick={handleLogout}
+								></ExitToAppIcon>
 							</div>
 						)}
 					</Toolbar>
@@ -159,7 +174,7 @@ function NavTabs({ onToggle }) {
 									<ListItemIcon>
 										<VpnKeyIcon className={classes.iconStyle} />
 									</ListItemIcon>
-									<ListItemText primary={"Login"} />
+									<ListItemText primary={"Sign In"} />
 								</ListItem>
 							)}
 							{authenticated === true && (
@@ -167,7 +182,7 @@ function NavTabs({ onToggle }) {
 									<ListItemIcon>
 										<ExitToAppIcon className={classes.iconStyle} />
 									</ListItemIcon>
-									<ListItemText primary={"Logout"} />
+									<ListItemText primary={"Sign Out"} />
 								</ListItem>
 							)}
 							<hr></hr>

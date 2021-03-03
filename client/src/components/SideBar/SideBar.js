@@ -57,7 +57,7 @@ function Sidebar() {
 						<li>
 							<UserWelcome />
 							<a href="#" onClick={handleLogout}>
-								Logout
+								Sign Out
 							</a>
 						</li>
 					)}

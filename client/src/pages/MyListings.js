@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
 	listingsContainer: {
 		border: "0.5px solid gray",
-		padding: 20
+		padding: 20,
 	},
 }));
 
@@ -55,6 +55,7 @@ function MyListings() {
 				>
 					My Listing
 				</h1>
+
 				<div className={classes.listingsContainer}>
 					<Grid container spacing={3}>
 						{properties.map((property, index) => (
