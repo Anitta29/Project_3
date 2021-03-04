@@ -151,7 +151,7 @@ const reducer = (auth = initialState, action) => {
 					(propertyId) => propertyId !== action.payload
 				),
 			};
-
+			
 		// VIEWED
 		case "SET_VIEWED":
 			return {

@@ -55,7 +55,7 @@ function AboutUs(property, onFavoriteClick) {
 	return (
 		<Container align="center" maxWidth={false}>
 			<section className="display">
-				<div class="title">
+				<div className="title">
 					<h1
 						style={{
 							padding: 20,
@@ -100,7 +100,6 @@ function AboutUs(property, onFavoriteClick) {
 								</CardActions>
 							</Card>
 						</Grid>
-
 						<Grid align="center" item xs={12} md={4} lg={4}>
 							<Card className={classes.root}>
 								<CardActionArea>
@@ -161,7 +160,6 @@ function AboutUs(property, onFavoriteClick) {
 								</CardActions>
 							</Card>
 						</Grid>
-
 						<Grid align="center" item xs={12} md={4} lg={4}>
 							<Card className={classes.root}>
 								<CardActionArea>

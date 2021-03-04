@@ -2,12 +2,12 @@ import React from "react";
 import { login, setEmail, setPassword } from "../../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import { Link, Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,10 +28,6 @@ const useStyles = makeStyles((theme) => ({
 function Login() {
 	const classes = useStyles();
 
-	// const [email, setEmail] = useState("");
-	// const [password, setPassword] = useState("");
-	// const [token, setToken] = useState("");
-	// const [authenticated, setAuthenticated] = useState(false);
 	const { email, password, authenticated, errorMessage } = useSelector(
 		(state) => state.auth
 	);
@@ -42,21 +38,12 @@ function Login() {
 	if (authenticated) {
 		return <Redirect to="/" />;
 	}
-	// useEffect(() => {
-	//     axios.get('./signup').then(data => console.log(data))
-	// }, [])
 
-	// function logUser(e) {
-	// 	e.preventDefault()
-	// 	console.log(email, password)
-	// 	axios.post("/signin", { email: email, password: password });
-	// }
 	return (
 		<Container>
 			<section className="display">
 				<Card className={classes.root}>
 					<h1 style={{ color: "black", textAlign: "center" }}>Login</h1>
-
 					<CardContent>
 						<React.Fragment>
 							<TextField

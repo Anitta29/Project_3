@@ -10,7 +10,6 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setFavorite, removeFavorite } from "../redux/auth";
 import MyCarousel from "../components/Carousel/MyCarousel";
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
 import "../App.css";
 
@@ -35,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 			"Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 		fontWeight: "bold",
 		fontSize: "25px",
-		padding: "0 0px",
+		padding: "20px",
 		margin: 0,
 	},
 	Mycarousel: {
@@ -48,8 +47,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 function Landing() {
-	let theme = createMuiTheme();
-	theme = responsiveFontSizes(theme);
 	const classes = useStyles();
 	const [search, setSearch] = useState({
 		state: "NY",
@@ -122,7 +119,7 @@ function Landing() {
 					<div className="SearchBar">
 						<Typography
 							variant="h4"
-							
+							gutterBottom
 							className={classes.welcomeMessage}
 						>
 							"Welcome to WOW Realtor! <br></br>
