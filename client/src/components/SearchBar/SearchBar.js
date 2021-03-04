@@ -7,6 +7,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
@@ -15,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	formControl: {
-		width: "50%",
+		width: "60%",
+		height: "20%",
 	},
 	selectEmpty: {
 		marginTop: theme.spacing(2),
@@ -32,15 +34,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 	searchCity: {
 		color: "white",
+		padding: "-0px",
 	},
 	stateSelect: {
 		backgroundColor: "white",
+		marginTop: "10px",
+		paddingBottom: 0,
+		paddingTop: 0,
 	},
 	cityInput: {
 		backgroundColor: "white",
-		width: "50%",
+		width: "60%",
 		"& input": {
 			textAlign: "center",
+			padding: "10px",
 		},
 	},
 }));
@@ -55,7 +62,7 @@ function SearchForm(props) {
 
 	return (
 		<div>
-			<FormControl className={classes.formControl}>
+			<FormControl size="small" className={classes.formControl}>
 				{/* <InputLabel
 					className={classes.searchState}
 					id="demo-simple-select-outlined-label"

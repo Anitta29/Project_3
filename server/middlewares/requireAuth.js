@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 
 //make sure user is passin along the token
+/**
+ * [2.3] we are inside the express middelware
+ * validate the token to make sure it is valid and is not modify
+ */
 module.exports = (req, res, next) => {
 
   //destructure authorization from request headers
