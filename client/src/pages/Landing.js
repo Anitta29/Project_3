@@ -82,6 +82,11 @@ function Landing() {
 		event.preventDefault();
 		searchProperties(search.state, search.city);
 	};
+
+	/**
+	 * [2]
+	 * on click save favorite property
+	 */
 	const handleBtnClick = (property, isRemoved) => {
 		if (authenticated === false) {
 			return history.push("/login");
@@ -93,6 +98,10 @@ function Landing() {
 			});
 		}
 		API.saveProperty(property).then((result) => {
+			/**
+			 * [2.6] got response from the server / save was successfuly
+			 * update UI and alert "Property saved!"
+			 */
 			alert("Property Saved!");
 			dispatch(setFavorite(property.listing_id));
 		});

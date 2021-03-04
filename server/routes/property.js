@@ -632,10 +632,23 @@ router.get("/api/search/:state/:city", (req, res) => {
 			res.status(500).json(error.data);
 		});
 });
+
+/**
+ * [2.2]
+ * recieved request from client side to save property as favorite
+ */
 router.put("/api/properties", requireAuth, (req, res) => {
 	const property = req.body.property;
+	/**
+	 * [2.4]
+	 * update database user with the new favorite property
+	 */
 	User.updateOne({ _id: req.user._id }, { $push: { properties: property } })
 		.then(() => {
+			/**
+			 * [2.5] update successfuly
+			 * return to the client side / response back to the client
+			 */
 			// saved
 			res.json({ data: "saved" });
 		})

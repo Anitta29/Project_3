@@ -1,3 +1,7 @@
+/**
+ * [1]
+ * collect user email / password and submit
+ */
 import React from "react";
 import { login, setEmail, setPassword } from "../../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";

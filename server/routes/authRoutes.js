@@ -17,6 +17,10 @@ router.post("/signup", async (req, res) => {
 	}
 });
 
+/**
+ * [1.2]
+ * got the request from the client with the body { email, password }
+ */
 // on submit from the login page will send request to this API
 router.post("/signin", async (req, res) => {
 	const { email, password } = req.body;
@@ -27,6 +31,10 @@ router.post("/signin", async (req, res) => {
 		return res.status(422).send({ error: "Must provide email and password" });
 	}
 
+	/**
+	 * [1.3]
+	 * fetching database to see if user email exist
+	 */
 	//find user with thi email
 	const user = await User.findOne({ email });
 	if (!user) {
@@ -34,15 +42,39 @@ router.post("/signin", async (req, res) => {
 		return res.status(422).send({ error: "Invalid password or email" });
 	}
 
+	/**
+	 * [1.4]
+	 * validation: compare password
+	 */
 	//compare passwords
 	try {
 		// if success, generate token with user id
 		await user.comparePassword(password);
+
+		/**
+		 * [1.5]
+		 * create jwt (json web token) and store userId and name in the token
+		 */
 		const token = jwt.sign(
-			{ userId: user._id, name: user.name }, // data you want to add into the token
+			{
+				userId: user._id,
+				name: user.name,
+
+				// INFO:
+				// passing from client so it is not hash
+				// password: password,
+
+				// this is from the database and it is hash
+				// password2: user.password,
+			}, // data you want to add into the token
 			"MY_SECRET_KEY" // secreit key need to match when you are validing the token, secret token can be put into ENVIRONMENT VARIABLE so it is not expose
 		);
 		console.log(token);
+
+		/**
+		 * [1.6]
+		 * send jwt back to the client
+		 */
 		res.send({ token });
 	} catch (err) {
 		//if not, return error
