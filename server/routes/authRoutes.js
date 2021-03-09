@@ -31,21 +31,22 @@ function makeid(length) {
 router.post("/forgot-password", async (req, res) => {
 	const { email } = req.body;
 	try {
-		const user = await User.findOne({ email });
+		// const user = await User.findOne({ email });
 
-		if (user) {
-			console.log("******************** user **********************");
-			console.log(user);
-			const resetCode = makeid(5);
-			user.resetPasswordCode = resetCode;
-			await user.save();
+		// if (user) {
+		// 	console.log("******************** user **********************");
+		// 	console.log(user);
+		// 	const resetCode = makeid(5);
+		// 	user.resetPasswordCode = resetCode;
+		// 	await user.save();
 
-			// send email to user with instruction to change password link
-			// http://localhost:3001/reset-password?code=1234
-			const resetLink = `${req.hostname}/reset-password?code=${resetCode}`;
-		}
+		// 	// send email to user with instruction to change password link
+		// 	// http://localhost:3001/reset-password?code=1234
+		// 	const resetLink = `${req.hostname}/reset-password?code=${resetCode}`;
+		// 	console.log(("reset link: ", resetLink));
+		// }
 
-		res.sendStatus(200);
+		res.status(200).send("OK");
 	} catch (err) {
 		return res.status(422).send(err.message);
 	}
