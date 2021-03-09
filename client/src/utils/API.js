@@ -12,15 +12,15 @@ const API = {
 	},
 	/**
 	 * [2.1]
-	 * send a PUT call to the server and attach the JWT to the Authorization headers
-	 * pass in the property data { listing_id, image... }
+	 * send a PUT call to the server and attach the TOKEN to the Authorization headers
+	 * with property data { listing_id, image... }
 	 */
 	saveProperty: function (property) {
 		const token = localStorage.getItem("token");
 		return axios.put(
 			`/api/properties`,
-			{ property },
-			{ headers: { Authorization: "Bearer " + token } }
+			{ property }, // property data to send to server
+			{ headers: { Authorization: "Bearer " + token } } // header token
 		);
 	},
 	auth: function (data) {

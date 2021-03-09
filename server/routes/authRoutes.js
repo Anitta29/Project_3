@@ -19,7 +19,8 @@ router.post("/signup", async (req, res) => {
 
 /**
  * [1.2]
- * got the request from the client with the body { email, password }
+ * this is the server route to handle the signin request.
+ * we received the body "{ email, password }" from client
  */
 // on submit from the login page will send request to this API
 router.post("/signin", async (req, res) => {

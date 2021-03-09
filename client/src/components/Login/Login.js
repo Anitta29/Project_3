@@ -1,6 +1,7 @@
 /**
  * [1]
- * collect user email / password and submit
+ * this component is the login page.
+ * we collect user email / password to prepare to submit to server
  */
 import React from "react";
 import { login, setEmail, setPassword } from "../../redux/auth";
