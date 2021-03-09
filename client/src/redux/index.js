@@ -1,16 +1,21 @@
-import {combineReducers, createStore, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
-import authReducer from './auth'
-
+import { combineReducers, createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import authReducer from "./auth";
 
 const rootReducer = combineReducers({
+	auth: authReducer,
+});
 
-    auth: authReducer
-})
-const store = createStore(rootReducer, applyMiddleware(thunk))
-store.subscribe(() =>
-{
-    console.log(store.getState())
-}) 
+const store = createStore(
+	rootReducer,
+	compose(
+		applyMiddleware(thunk),
+		window.devToolsExtension ? window.devToolsExtension() : (f) => f
+	)
+);
 
-export default store
+store.subscribe(() => {
+	console.log(store.getState());
+});
+
+export default store;
