@@ -17,6 +17,40 @@ router.post("/signup", async (req, res) => {
 	}
 });
 
+function makeid(length) {
+	var result = "";
+	var characters =
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
+}
+
+router.post("/forgot-password", async (req, res) => {
+	const { email } = req.body;
+	try {
+		const user = await User.findOne({ email });
+
+		if (user) {
+			console.log("******************** user **********************");
+			console.log(user);
+			const resetCode = makeid(5);
+			user.resetPasswordCode = resetCode;
+			await user.save();
+
+			// send email to user with instruction to change password link
+			// http://localhost:3001/reset-password?code=1234
+			const resetLink = `${req.hostname}/reset-password?code=${resetCode}`;
+		}
+
+		res.sendStatus(200);
+	} catch (err) {
+		return res.status(422).send(err.message);
+	}
+});
+
 /**
  * [1.2]
  * this is the server route to handle the signin request.

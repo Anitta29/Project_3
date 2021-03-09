@@ -52,5 +52,8 @@ const API = {
 			headers: { Authorization: "Bearer " + token },
 		});
 	},
+	forgotPassword: function (email) {
+		return axios.post("/forgot-password", { email });
+	},
 };
 export default API;
