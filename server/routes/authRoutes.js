@@ -17,9 +17,45 @@ router.post("/signup", async (req, res) => {
 	}
 });
 
+function makeid(length) {
+	var result = "";
+	var characters =
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
+}
+
+router.post("/forgot-password", async (req, res) => {
+	const { email } = req.body;
+	try {
+		// const user = await User.findOne({ email });
+
+		// if (user) {
+		// 	console.log("******************** user **********************");
+		// 	console.log(user);
+		// 	const resetCode = makeid(5);
+		// 	user.resetPasswordCode = resetCode;
+		// 	await user.save();
+
+		// 	// send email to user with instruction to change password link
+		// 	// http://localhost:3001/reset-password?code=1234
+		// 	const resetLink = `${req.hostname}/reset-password?code=${resetCode}`;
+		// 	console.log(("reset link: ", resetLink));
+		// }
+
+		res.status(200).send("OK");
+	} catch (err) {
+		return res.status(422).send(err.message);
+	}
+});
+
 /**
  * [1.2]
- * got the request from the client with the body { email, password }
+ * this is the server route to handle the signin request.
+ * we received the body "{ email, password }" from client
  */
 // on submit from the login page will send request to this API
 router.post("/signin", async (req, res) => {

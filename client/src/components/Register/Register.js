@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
 		color: "black",
 		marginTop: "20%",
 		alignItems: "center",
-		paddingTop: 40,
-		paddingBottom: 40,
+		paddingTop: 20,
+		paddingBottom: 20,
 	},
 	input: {
 		marginTop: 10,
@@ -60,6 +60,7 @@ function UserRegister() {
 								value={name}
 								onChange={(e) => dispatch(setName(e.target.value))}
 							/>
+							<br />
 							<TextField
 								className={classes.input}
 								label="Type your email"
@@ -70,6 +71,8 @@ function UserRegister() {
 								value={email}
 								onChange={(e) => dispatch(setEmail(e.target.value))}
 							/>
+							<br />
+
 							<TextField
 								className={classes.input}
 								label="Type your password"
@@ -81,6 +84,7 @@ function UserRegister() {
 								onChange={(e) => dispatch(setPassword(e.target.value))}
 							/>
 							{errorMessage === "" ? null : <p>{errorMessage}</p>}
+							<br />
 
 							<Button
 								className={classes.input}

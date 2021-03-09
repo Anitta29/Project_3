@@ -4,8 +4,13 @@ const User = mongoose.model("User");
 
 //make sure user is passin along the token
 /**
- * [2.3] we are inside the express middelware
- * validate the token to make sure it is valid and is not modify
+ * [2.3]
+ * this is the  express middelware
+ * we validate validate the token to make sure it is valid and is not modify
+ * 
+ * 
+ * if invalid then they will get redirect to login page
+ * else continue route path
  */
 module.exports = (req, res, next) => {
 

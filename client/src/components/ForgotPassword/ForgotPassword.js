@@ -3,8 +3,8 @@
  * this component is the login page.
  * we collect user email / password to prepare to submit to server
  */
-import React from "react";
-import { login, setEmail, setPassword } from "../../redux/auth";
+import React, { useState } from "react";
+import { setEmail, forgotPassword } from "../../redux/auth";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
@@ -13,6 +13,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import API from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -37,6 +38,8 @@ function Login() {
 		(state) => state.auth
 	);
 
+	const [send, setSend] = useState(false);
+
 	const dispatch = useDispatch();
 
 	console.log({ authenticated });
@@ -44,11 +47,45 @@ function Login() {
 		return <Redirect to="/" />;
 	}
 
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		API.forgotPassword(email).then((result) => {
+			setSend(true);
+		});
+	};
+
+	if (send) {
+		return (
+			<Container>
+				<section className="display">
+					<Card className={classes.root}>
+						<h1 style={{ color: "black", textAlign: "center" }}>
+							Forgot Password
+						</h1>
+						<span>Insturction has been send you your email</span>
+						<CardContent>
+							<React.Fragment>
+								<br />
+								<Link to="/login">Return to Sign in</Link>
+							</React.Fragment>{" "}
+						</CardContent>
+					</Card>
+				</section>
+			</Container>
+		);
+	}
+
 	return (
 		<Container>
 			<section className="display">
 				<Card className={classes.root}>
-					<h1 style={{ color: "black", textAlign: "center" }}>Login</h1>
+					<h1 style={{ color: "black", textAlign: "center" }}>
+						Forgot Password
+					</h1>
+					<span>
+						Enter your email adress below and we will send you instruction on
+						how to change your password
+					</span>
 					<CardContent>
 						<React.Fragment>
 							<TextField
@@ -61,42 +98,24 @@ function Login() {
 								value={email}
 								onChange={(e) => dispatch(setEmail(e.target.value))}
 							/>
-							<TextField
-								className={classes.input}
-								label="Type your password"
-								type="password"
-								id="outlined-basic"
-								variant="outlined"
-								validate
-								value={password}
-								onChange={(e) => dispatch(setPassword(e.target.value))}
-							/>
+
 							{errorMessage === "" ? null : <p>{errorMessage}</p>}
 
 							<br />
 							<Button
 								className={classes.input}
 								type="submit"
-								value="Login"
+								value="Send"
 								variant="contained"
 								color="primary"
-								onClick={() => dispatch(login({ email, password }))}
+								onClick={handleSubmit}
 							>
-								Login
-							</Button>
-							<br />
-							<Button
-								component={Link}
-								to={"/register"}
-								className={classes.input}
-								variant="contained"
-								color="primary"
-							>
-								Register
+								Send
 							</Button>
 							<br />
 							<br />
-							<Link to="/forgot-password">Forgot Password?</Link>
+							<br />
+							<Link to="/login">Return to Sign in</Link>
 						</React.Fragment>{" "}
 					</CardContent>
 				</Card>

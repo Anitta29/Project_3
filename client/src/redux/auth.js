@@ -49,20 +49,21 @@ export const checkAuth = () => (dispatch) => {
 
 /**
  * [1.1]
- * sending email password request to the server
+ * on the redux dispatch we post the request
+ * to send email and password to the server
  */
 // set redux actions
 export const login = () => (dispatch, getState) => {
 	const { email, password } = getState().auth;
 	const user = { email, password };
-    // client side: send email & password to server api ( POST: /signin => body { email, password } )
+	// client side: send email & password to server api ( POST: /signin => body { email, password } )
 	API.auth(user)
 		.then((response) => {
 			/**
-			 * [1.6]
+			 * [1.7]
 			 * got response from server ( contain the signed jwt token )
 			 */
-            // the "resposne" has return from the server api
+			// the "resposne" has return from the server api
 			dispatch({
 				type: "CLEAR_ERROR",
 			});
@@ -160,7 +161,7 @@ const reducer = (auth = initialState, action) => {
 					(propertyId) => propertyId !== action.payload
 				),
 			};
-			
+
 		// VIEWED
 		case "SET_VIEWED":
 			return {
@@ -175,8 +176,8 @@ const reducer = (auth = initialState, action) => {
 			};
 		case "LOGIN":
 			/**
-			 * [1.7]
-			 * save token to localStorage so when user refresh they stay login
+			 * [1.8]
+			 * redux reducer: save token to localStorage so when user refresh they stay login
 			 */
 			localStorage.setItem("token", action.payload.token);
 			const { name } = jwt.decode(action.payload.token);

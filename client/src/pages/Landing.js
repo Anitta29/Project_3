@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
 			"Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 		fontWeight: "bold",
 		fontSize: "25px",
-		padding: "20px",
 		margin: 0,
+		marginTop:20
 	},
 	Mycarousel: {
 		position: "absolute",
@@ -83,10 +83,6 @@ function Landing() {
 		searchProperties(search.state, search.city);
 	};
 
-	/**
-	 * [2]
-	 * on click save favorite property
-	 */
 	const handleBtnClick = (property, isRemoved) => {
 		if (authenticated === false) {
 			return history.push("/login");
@@ -97,10 +93,16 @@ function Landing() {
 				dispatch(removeFavorite(property.listing_id));
 			});
 		}
+
+		/**
+		 * [2]
+		 * click event handler to save favorite property
+		 */
 		API.saveProperty(property).then((result) => {
 			/**
-			 * [2.6] got response from the server / save was successfuly
-			 * update UI and alert "Property saved!"
+			 * [2.6] 
+			 * got resposne from server
+			 * property is saved to database
 			 */
 			alert("Property Saved!");
 			dispatch(setFavorite(property.listing_id));

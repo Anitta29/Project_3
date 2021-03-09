@@ -13,6 +13,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { checkAuth } from "./redux/auth";
+import ForgotPassword from "./pages/ForgotPassord";
 
 function App() {
 	const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
 				<Route exact path="/about" component={About} />
 				<Route exact path="/login" component={UserLogin} />
 				<Route exact path="/register" component={UserRegister} />
+				<Route exact path="/forgot-password" component={ForgotPassword} />
 			</Router>
 		</main>
 	);
